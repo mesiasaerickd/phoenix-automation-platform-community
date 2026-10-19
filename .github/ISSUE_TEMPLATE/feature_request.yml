@@ -1,0 +1,21 @@
+name: Propuesta / Feature request
+description: Proponer mejoras a PAP
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Necesidad / Problem
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Solución propuesta / Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Pruebas sugeridas / Suggested validation
