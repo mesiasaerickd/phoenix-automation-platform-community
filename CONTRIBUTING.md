@@ -27,3 +27,15 @@ Thank you for contributing to Phoenix Automation Platform (PAP).
 - By submitting a contribution, you affirm that you have the right to submit it under the applicable license.
 
 Read [SECURITY.md](SECURITY.md) for vulnerability reporting; do not disclose exploitable issues in public Issues.
+
+## Autoría y DCO (Español)
+
+Seguimos un mecanismo equivalente al de contribuciones de AWX: cada commit debe incluir la firma de conformidad con el Developer Certificate of Origin (DCO 1.1). Utiliza `git commit -s -m "descripción"`. La firma DCO confirma el derecho a enviar la contribución, pero no sustituye el análisis de licencias de terceros. Los Pull Requests deben dirigirse a `dev`, sin commits de merge ni secretos.
+
+---
+
+## Developer Certificate of Origin (English)
+
+PAP follows the upstream AWX contribution model: contributors must sign off each commit under Developer Certificate of Origin (DCO) 1.1. Use `git commit -s -m "description"` and submit a Pull Request to `dev`. A DCO sign-off asserts the right to submit the work, but does not replace third-party license and provenance checks. Keep PR history clean and free of secrets and merge commits.
+
+See https://developercertificate.org/ for the DCO text.
