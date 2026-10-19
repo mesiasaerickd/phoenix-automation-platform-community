@@ -43,7 +43,7 @@ The RC2 candidate passed functional laboratory checks, including database migrat
 
 ## 🤝 How to contribute
 
-Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the planned `dev` integration branch once enabled. The planned `prd` branch will hold reviewed stable releases. **No community branches have been created yet.**
+Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the `dev` integration branch. The `prd` branch is reserved for reviewed stable releases, while `contrib` contains community documentation. **Community branches exist:** `contrib`, `dev`, and `prd`. Default-branch selection and protection enforcement are pending.
 
 ## 📚 Community documentation
 
