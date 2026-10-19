@@ -1,5 +1,8 @@
 <div align="center">
 
+<img src="docs/images/pap-banner.svg" alt="PAP — Phoenix Automation Platform" width="100%" />
+
+
 # 🔥 Phoenix Automation Platform (PAP)
 ### Community Edition — Espacio para contribuciones
 
