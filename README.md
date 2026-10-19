@@ -60,11 +60,11 @@ La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo
 
 1. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y revisa las incidencias existentes.
 2. Propón una mejora mediante **Issue**, o crea un **Fork** para preparar código.
-3. Trabaja en una rama de tu propio Fork y abre un **Pull Request** hacia la rama de integración `dev` cuando esté habilitada.
+3. Trabaja en una rama de tu propio Fork y abre un **Pull Request** hacia la rama de integración `dev` (rama disponible; protecciones pendientes).
 4. Describe los cambios, las pruebas y los posibles impactos.
 5. El mantenimiento revisará y aceptará cada aporte antes de incluirlo.
 
-La rama estable `prd` se reservará para promociones revisadas. **Por ahora no están configuradas las ramas comunitarias ni se aceptan cambios de código en producción.**
+La rama estable `prd` queda reservada para promociones revisadas; `contrib` alberga documentación y reglas. **Ramas comunitarias creadas:** `contrib`, `dev` y `prd`. La configuración de protecciones y la publicación instalable siguen pendientes.
 
 ## 📚 Documentación de la comunidad
 
