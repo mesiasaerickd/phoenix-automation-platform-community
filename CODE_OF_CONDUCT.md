@@ -1,11 +1,17 @@
 # Código de conducta / Code of Conduct
 
-Queremos una comunidad profesional, constructiva y respetuosa.
+Participa con respeto, argumentos técnicos y evidencias. No se permiten acoso, discriminación, ataques personales ni divulgación de información privada. Los mantenedores podrán moderar y restringir participaciones. Para incidentes privados, solicita un canal confidencial al responsable del repositorio.
 
-- Tratar a todos con respeto, independientemente de experiencia, procedencia o perspectiva.
-- Debatir propuestas técnicas con hechos y evidencia.
-- Evitar ataques personales, acoso, discriminación y divulgación de datos privados.
-- No publicar material confidencial, credenciales ni información privada de organizaciones.
-- Ayudar a reproducir fallos con ejemplos mínimos y seguros.
+---
 
-El equipo de mantenimiento podrá moderar conversaciones, cerrar hilos, rechazar contribuciones o restringir cuentas por incumplimiento. Los incidentes de conducta se pueden reportar de forma privada al propietario del repositorio mediante los canales de contacto que este habilite; no publiques información privada en Issues.
+# Code of Conduct (English)
+
+We are committed to a respectful, professional, and constructive community.
+
+- Treat everyone fairly regardless of background or experience.
+- Debate technical proposals with evidence, not personal attacks.
+- Do not harass, discriminate, threaten, or disclose private information.
+- Share safe, minimal reproductions of problems without credentials or sensitive data.
+- Respect maintainer decisions and the review process.
+
+Maintainers may edit or remove inappropriate contributions, close threads, and restrict participation where necessary. Request a confidential contact channel from the repository owner to report conduct incidents; do not disclose sensitive personal details in public Issues.
