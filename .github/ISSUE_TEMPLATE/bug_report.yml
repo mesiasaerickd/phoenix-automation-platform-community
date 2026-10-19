@@ -1,0 +1,33 @@
+name: Reportar bug / Bug report
+description: Reportar un defecto reproducible en software PAP
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "No compartas credenciales, inventarios reales ni otros datos sensibles."
+  - type: input
+    id: version
+    attributes:
+      label: Versión / Version
+      description: Tag, commit o digest de imagen
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir / Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado / Expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Resultado observado / Actual
+    validations:
+      required: true
