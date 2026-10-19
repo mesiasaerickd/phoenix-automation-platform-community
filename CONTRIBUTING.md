@@ -1,33 +1,29 @@
-# Guía de contribución / Contributing
+# Guía de contribución / Contributing Guide
 
-Gracias por ayudar a mejorar **Phoenix Automation Platform**.
+PAP acepta propuestas mediante Issues y Pull Requests. Utiliza un Fork, crea una rama de trabajo y solicita revisión hacia `dev`. La rama `prd` publica únicamente versiones aprobadas. `contrib` presenta el proyecto y sus reglas. No incluyas secretos, datos empresariales ni material sin licencia compatible.
 
-## Flujo previsto
+---
 
-1. Revisa los Issues existentes antes de abrir uno nuevo.
-2. Para cambios importantes, describe primero el problema y la propuesta en un Issue.
-3. Haz Fork del repositorio y crea una rama descriptiva, como `fix/descripcion` o `docs/tema`.
-4. Prepara commits pequeños y trazables, sin datos privados.
-5. Abre un Pull Request hacia **`dev`**, cuando esa rama esté habilitada.
-6. Adjunta pruebas, justificación y notas de compatibilidad.
-7. Un mantenedor revisará el cambio. La promoción a **`prd`** corresponde exclusivamente al mantenimiento.
+# Contributing Guide (English)
 
-## Reglas
+Thank you for contributing to Phoenix Automation Platform (PAP).
 
-- Nunca subir tokens, contraseñas, certificados privados ni inventarios reales.
-- No incorporar binarios, imágenes grandes ni dependencias de procedencia dudosa.
-- Mantener licencias, copyright y avisos de código reutilizado.
-- No introducir cambios silenciosos de firewall, SELinux, almacenamiento ni SO del host.
-- Actualizar pruebas y documentación cuando cambie el comportamiento.
-- Los cambios en API, operador, instalador, seguridad o permisos requieren revisión especial.
-- Aceptamos propuestas, pero ninguna contribución tiene aceptación automática.
+## Contribution workflow
 
-## Formato de PR
+1. Check existing Issues before opening a new one.
+2. Open an Issue for significant changes and describe the intended behavior.
+3. Fork this repository and create a focused branch (for example, `fix/description` or `docs/topic`).
+4. Submit a Pull Request **targeting `dev`**. Do not target `prd`, `contrib`, or `main`.
+5. Explain the change, motivation, compatibility, risks, tests, and documentation updates.
+6. Wait for maintainer review and required CI checks. Maintainers alone promote reviewed changes to `prd`.
 
-Explica **qué**, **por qué**, **riesgo**, **compatibilidad**, **pruebas realizadas** y **documentación**. Adjunta logs filtrados de información sensible.
+## Rules
 
-## Requisitos de autoría
+- Never commit credentials, tokens, private keys, personal records, customer inventories, or internal infrastructure details.
+- Retain applicable upstream licenses, copyright notices and attribution. Declare third-party sources.
+- Do not introduce undocumented host-level changes (SELinux, firewall, storage, networking).
+- Include reproducible tests for behavior changes and redact logs.
+- Security, authentication, operator, installer, and permission changes need special maintainer review.
+- By submitting a contribution, you affirm that you have the right to submit it under the applicable license.
 
-Declara que tienes derecho a contribuir el código enviado y que cumple la licencia aplicable. Cada contribución debe indicar su procedencia si incluye materiales de terceros. No copies código de otros proyectos sin revisar su licencia.
-
-> **Nota:** las ramas de trabajo comunitarias se configurarán en una fase posterior; esta guía describe el flujo previsto.
+Read [SECURITY.md](SECURITY.md) for vulnerability reporting; do not disclose exploitable issues in public Issues.
