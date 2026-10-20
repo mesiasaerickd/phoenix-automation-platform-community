@@ -1,13 +1,19 @@
-# Política de seguridad / Security policy
+# Política de seguridad / Security Policy
 
-## Reportar una vulnerabilidad
+No publiques vulnerabilidades explotables, tokens ni credenciales en Issues. Usa **Security → Advisories → Report a vulnerability**, si está disponible; de lo contrario, pide un canal privado al responsable. Incluye componente, versión, impacto y evidencia depurada.
 
-**No publiques detalles explotables ni credenciales en un Issue público.**
+---
 
-Utiliza el mecanismo privado de GitHub **Security → Advisories → Report a vulnerability** cuando esté habilitado. Si aún no aparece esa opción, contacta de forma privada al propietario del repositorio y solicita un canal seguro antes de compartir detalles sensibles.
+# Security Policy (English)
 
-Incluye versión, digest de imagen, componente, descripción, impacto observado y una reproducción mínima sin datos reales. El equipo revisará el reporte y coordinará una respuesta responsable.
+## Reporting a vulnerability
 
-## Alcance
+**Do not report exploitable vulnerabilities or credentials through public Issues or Discussions.**
 
-Esta política se refiere al código y a los artefactos **PAP** publicados aquí. El administrador del entorno es responsable de la configuración de red, hosts, firewall, clúster y datos operativos. Los avisos de dependencias de terceros se gestionan con su correspondiente atribución y versiones.
+Use GitHub **Security → Advisories → Report a vulnerability** if private vulnerability reporting is enabled. Otherwise, contact the repository owner privately to request a secure reporting channel before sharing technical details.
+
+Provide the affected version or commit, component, image digest when relevant, observed impact, and a safe minimal reproduction without production data. Maintainers will assess and coordinate responsible disclosure; no response-time guarantee is implied.
+
+## Scope
+
+This policy covers PAP source code and artifacts explicitly released by this repository. Deployers remain responsible for host, network, firewall, secrets, Kubernetes/K3s configuration, and operational security.

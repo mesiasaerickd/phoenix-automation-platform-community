@@ -1,7 +1,13 @@
-# Soporte comunitario / Community support
+# Soporte / Support
 
-PAP Community recibe **Issues** sobre documentación, bugs reproducibles, mejoras propuestas y compatibilidad de software publicado aquí.
+PAP es un proyecto comunitario sin SLA. Para errores reproducibles y mejoras utiliza Issues, incluyendo versión, pasos, resultado esperado y evidencia sin secretos.
 
-Antes de reportar, revisa la documentación y proporciona versión, commit o digest de imagen, descripción, resultado esperado y evidencia depurada.
+---
 
-El repositorio es un proyecto colaborativo: la publicación no constituye compromiso contractual de soporte ni acuerdo de tiempos de respuesta. La instalación, las credenciales, la red, el almacenamiento y la operación de Kubernetes/K3s corresponden al administrador de cada entorno.
+# Community Support (English)
+
+Open GitHub Issues for reproducible defects, documentation issues, compatibility questions, and feature requests related to published PAP content.
+
+Before posting, search existing Issues. Include the version or commit, container digest when relevant, environment details that are safe to disclose, reproduction steps, expected and actual results, and sanitized logs.
+
+PAP is community maintained and provides **no contractual support, SLA, or guaranteed response time**. Operators are responsible for their deployments, credentials, network, storage, and Kubernetes/K3s infrastructure. Security vulnerabilities must be reported privately as described in [SECURITY.md](SECURITY.md).

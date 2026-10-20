@@ -1,50 +1,34 @@
-# Preparación del repositorio de comunidad (sin crear ramas aún)
+# Configuración de comunidad / Community Repository Setup
 
-## Estado
+Ramas creadas: `contrib` (documentación y presentación), `dev` (integración de PR), `prd` (publicaciones estables). `main` es heredada y no debe usarse. La rama predeterminada y las protecciones deben activarse en GitHub Settings; su configuración no está confirmada.
 
-Este archivo documenta la configuración propuesta. La creación de ramas y la publicación de fuentes requieren una fase posterior y aprobación del responsable.
+---
 
-## Modelo previsto
+# Community Repository Setup (English)
 
-| Rama | Propósito | Entrada |
+## Branch model
+
+| Branch | Purpose | Contributions |
 | --- | --- | --- |
-| `dev` | Integración comunitaria, pruebas y revisión | Pull Requests aprobados desde Forks |
-| `prd` | Código estable publicado | Promoción revisada `dev → prd` |
+| `contrib` | Public landing page, community policies, documentation | Maintainer-approved updates |
+| `dev` | Reviewed community source integration | PRs from forks, with checks |
+| `prd` | Stable reviewed releases, tagged for download | Maintainer promotion only |
+| `main` | Legacy bootstrap branch; unused | No contributions |
 
-El repositorio público es independiente del repositorio interno de compilación y aceptación; **no debe recibir credenciales, imágenes privadas ni parámetros de infraestructura interna**.
+The private development and production repository is **separate**. Never mirror private credentials, infrastructure configuration, unpublished images, or internal artifacts.
 
-## Secuencia cuando se autoricen ramas
+## Settings to apply manually
 
-1. Validar licencia, copyright, referencias a marcas, dependencias y secretos de todo el material a publicar.
-2. Crear `dev` a partir de una base revisada.
-3. Crear `prd` desde la misma base aprobada.
-4. Definir `prd` como rama predeterminada para que visitantes vean documentación y código estable.
-5. Configurar protección de `prd` y `dev` antes de invitar colaboradores.
-6. Habilitar el flujo de Issues, Forks y PRs a `dev`.
-7. Preparar CI de análisis estático, tests y control de secretos **antes de exigir checks por nombre**.
+1. **Settings → General → Default branch:** choose `contrib`.
+2. **Settings → Rules → Rulesets:** create an active rule for `prd`: require a pull request and maintainer approval, block deletions and force-pushes, and require passing checks once CI checks exist.
+3. Add an active rule for `dev`: require pull requests, reviews, and passing tests where available; prevent deletion and force-push.
+4. Protect `contrib` from deletion and force-push; require review for changes.
+5. Add `.github/CODEOWNERS`, use least-privilege GitHub Actions tokens, and do not expose secrets to untrusted PR workflows.
+6. Publish installation artifacts as **versioned GitHub Releases** from tested `prd` commits; branch protection does not itself provide installable software.
+7. Verify rules are active/enforced for this repository and account plan.
 
-## Configuración recomendada de GitHub
+**Important:** repository visibility and read access are separate from write permissions. Any visitor can read a public `prd`; write and merge permissions must remain restricted.
 
-En `Settings → Rules → Rulesets` o `Branches` (según el plan y la interfaz):
+## Publication gate
 
-- Proteger `prd`: solicitar Pull Request, revisión, bloqueo de force-push y eliminación; requerir checks definidos y disponibles.
-- Proteger `dev`: solicitar Pull Request de terceros, revisión de propietario y tests; bloquear eliminación y force-push.
-- Habilitar **Require review from Code Owners** donde el plan lo permita.
-- Usar `CODEOWNERS` para solicitar revisión al propietario.
-- Usar **Squash merge** para aportes pequeños y trazables.
-- Limitar las credenciales de workflows (`permissions: contents: read` por defecto).
-- Evitar ejecución de scripts de PR externos con secretos o permisos de escritura.
-
-## Protecciones y matices de GitHub
-
-La aplicación de ciertas rulesets o protecciones en repositorios públicos personales puede variar según plan y permisos; comprobar que la regla esté **active** y aplicándose, no solo creada. Los administradores con bypass pueden mantener capacidad de emergencia, pero usarla excepcionalmente.
-
-## Checklist previo a publicar fuentes
-
-- [ ] Revisión de secretos y configuraciones internas.
-- [ ] Licencias y atribuciones de fuentes, imágenes y assets.
-- [ ] Rama base y release definido.
-- [ ] CI en entorno aislado y sin credenciales expuestas.
-- [ ] Guías de instalación y dependencias reproducibles.
-- [ ] Avisos de cambios respecto a AWX.
-- [ ] Política de reportes de seguridad publicada y habilitada.
+Do not copy source or build artifacts from the private repository until secrets, licenses, upstream NOTICE obligations, code provenance, assets, dependencies, and reproducible build/test evidence have been audited. Document each release with commit, version, hashes, and installation instructions.
