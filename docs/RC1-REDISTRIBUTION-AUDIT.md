@@ -1,0 +1,36 @@
+# PAP v0.1.0 RC1 — Estado de auditoría de redistribución
+
+**Estado:** revisión técnica parcial; redistribución y cumplimiento de licencias **no certificados**. Este registro se basa en inventarios ejecutados sobre seis imágenes locales con etiqueta `dev-20261020`; no equivale a una SBOM completa ni a asesoría legal.
+
+## Contexto y objetivo
+
+Phoenix Automation Platform es una iniciativa comunitaria independiente basada en AWX. El software se publica gratuitamente; ello no sustituye las obligaciones de licencias y avisos originales. No existe afiliación, certificación ni patrocinio oficial de Red Hat, AWX o Ansible.
+
+## Evidencia recopilada en SVLNX01
+
+| Imagen | Base observada | RPM | APK | Paquetes Python detectados | Metadatos Python sin licencia declarada |
+| --- | --- | ---: | ---: | ---: | ---: |
+| pap-operator | AlmaLinux 9.8 | 239 | — | 35 | 5 |
+| pap-web-task | AlmaLinux 9.8 | 214 | — | 18 | 3 |
+| pap-postgres | AlmaLinux 9.8 | 225 | — | 4 | 0 |
+| pap-redis | Alpine 3.24.2 | — | 20 | 0 | 0 |
+| pap-ee-control | AlmaLinux 9.8 | 241 | — | 34 | 4 |
+| pap-ee-core | AlmaLinux 9.8 | 241 | — | 34 | 4 |
+
+Los totales incluyen paquetes repetidos entre imágenes. La ausencia de licencia en metadatos de Python no implica necesariamente una licencia ausente del proyecto. Los datos proceden de inventarios locales bajo `/opt/pap-license-audit` y requieren evaluación de integridad.
+
+## Pendientes verificables
+
+1. **Redis 8.10.2:** ejecutable `/usr/local/bin/redis-server` copiado durante la construcción, no registrado como APK. No se encontró aviso de licencia de Redis en las ubicaciones comprobadas. Redis 8 está disponible bajo elección entre AGPLv3, SSPLv1 o RSALv2; para el objetivo open source de PAP debe evaluarse la opción AGPLv3, retener sus avisos y cumplir las obligaciones aplicables. Ver [política oficial de Redis](https://redis.io/legal/licenses/). **Pendiente:** comprobar el origen exacto del binario, proporcionar atribución, licencia correspondiente y acceso al código fuente adecuado.
+2. **pap-event-bridge 0.1.0:** dentro de la imagen `pap-operator` se identificaron `pap_event_bridge/__init__.py` y `plugin.py`, pero no metadatos de autor ni licencia declarada. **Pendiente:** localizar repositorio/autor y documentar licencia original o de contribución autorizada.
+3. **Frontend compilado:** se localizaron múltiples archivos `/var/lib/awx/public/static/awx/*.js.LICENSE.txt`. **Pendiente:** comprobar cobertura, integridad y correspondencia con la distribución del frontend y sus fuentes.
+4. **Dependencias Python:** revisar avisos originales de Jinja2, lockfile, ptyprocess, setuptools, dumb-init y packaging cuando los metadatos son incompletos.
+5. **Componentes Linux (RPM/APK):** completar inventario por licencia y obligaciones de redistribución, en especial paquetes GPL/LGPL.
+6. **Fuentes de construcción:** verificar que las modificaciones y archivos fuente necesarios para reproducir las imágenes públicas estén accesibles con las atribuciones upstream.
+7. **Homologación externa:** instalación completa desde el Release público en una VM Linux limpia pendiente.
+
+## Criterio de publicación
+
+La versión **v0.1.0-rc1** sigue siendo un **pre-release**. No presentarla como verificada legalmente, certificada, exenta de vulnerabilidades ni homologada para producción. Mantener licencias y avisos originales. Resolver los puntos anteriores antes de declarar completa la auditoría.
+
+Este documento es un registro técnico para revisión comunitaria y no constituye dictamen jurídico.
