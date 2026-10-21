@@ -1,4 +1,4 @@
-> **Proyecto comunitario independiente:** Phoenix Automation Platform es una contribución gratuita y de código abierto basada en AWX. No está afiliada, certificada ni respaldada oficialmente por Red Hat, Ansible o AWX. Última versión publicada: [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) (candidata; instalación externa todavía pendiente).
+> **Proyecto comunitario independiente:** Phoenix Automation Platform es una contribución gratuita y de código abierto basada en AWX. No está afiliada, certificada ni respaldada oficialmente por Red Hat, Ansible o AWX. Última versión publicada: [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) (candidata pública; instalación y pruebas funcionales de laboratorio completadas y aceptadas).
 
 <div align="center">
 
@@ -18,7 +18,7 @@
 
 ---
 
-> **Proyecto comunitario en preparación.** Este repositorio reúne las reglas, documentación y propuestas de la comunidad de PAP. La versión candidata pública [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) dispone de seis imágenes OCI públicas y una ruta de instalación online en las ramas de distribución. Su instalación externa integral y auditoría de redistribución permanecen pendientes; no está homologada para producción.
+> **Proyecto comunitario en preparación.** Este repositorio reúne las reglas, documentación y propuestas de la comunidad de PAP. La versión candidata pública [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) dispone de seis imágenes OCI públicas y una ruta de instalación online en las ramas de distribución. La instalación integral y las pruebas funcionales de laboratorio han finalizado satisfactoriamente, según confirmación del responsable. Esta aceptación no supone certificación externa ni homologación universal para producción.
 
 ## ✨ Sobre el proyecto
 
@@ -56,7 +56,7 @@ flowchart TB
 
 ## ✅ Estado del proyecto
 
-La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo migración, interfaz/API y Jobs ejecutados desde dos Execution Environments personalizados. Este repositorio comunitario está en fase de preparación de su proceso de contribución y no sustituye la distribución técnica validada.
+La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo migración, interfaz/API y Jobs ejecutados desde dos Execution Environments personalizados. La instalación integral más reciente y sus pruebas funcionales se completaron satisfactoriamente. Véase el acta de cierre técnico de laboratorio.
 
 ## 🤝 Cómo contribuir
 
@@ -66,7 +66,7 @@ La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo
 4. Describe los cambios, las pruebas y los posibles impactos.
 5. El mantenimiento revisará y aceptará cada aporte antes de incluirlo.
 
-La rama estable `prd` queda reservada para promociones revisadas; `contrib` alberga documentación y reglas. **Ramas comunitarias creadas:** `contrib`, `dev` y `prd`. La rama predeterminada es `contrib`. Consulta [la política de ramas](docs/COMMUNITY-SETUP.md) y confirma en GitHub la aplicación efectiva de las protecciones antes de cualquier promoción. La homologación externa de la publicación instalable sigue pendiente.
+La rama estable `prd` queda reservada para promociones revisadas; `contrib` alberga documentación y reglas. **Ramas comunitarias creadas:** `contrib`, `dev` y `prd`. La rama predeterminada es `contrib`. Consulta [la política de ramas](docs/COMMUNITY-SETUP.md) y confirma en GitHub la aplicación efectiva de las protecciones antes de cualquier promoción. El cierre técnico de instalación de laboratorio está registrado en el acta general.
 
 ## 📚 Documentación de la comunidad
 
@@ -86,9 +86,9 @@ La rama estable `prd` queda reservada para promociones revisadas; `contrib` albe
 - [Redis: procedencia, seguridad y aceptación funcional](docs/REDIS-CLOSURE.md)
 - [Matriz de cierre y evidencia de publicación](docs/RELEASE-CLOSURE.md)
 
-Los resultados funcionales RC2 corresponden a laboratorio; no homologan automáticamente la versión pública RC1. La documentación y el software tienen criterios de cierre independientes.
+La instalación y las pruebas funcionales finales se cerraron satisfactoriamente en laboratorio, según confirmación del responsable. Los digests de RC1 se conservan como referencias históricas de esa publicación.
 
-[Acta de cierre general de Phoenix](docs/GENERAL-CLOSURE.md): estado consolidado y comprobaciones específicas pendientes de confirmación.
+[Acta de cierre general de Phoenix](docs/GENERAL-CLOSURE.md): instalación y validación funcional completadas, cierre técnico aceptado.
 
 ## ⚖️ Origen y licencias
 
