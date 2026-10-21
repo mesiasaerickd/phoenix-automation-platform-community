@@ -1,0 +1,6 @@
+ghcr.io/mesiasaerickd/pap-operator:dev-r737@sha256:06152b0716d9f655b726e405bc9ef9cefabfcb4fa6332c5332dacf29dc5e3555
+ghcr.io/mesiasaerickd/pap-web-task:dev-git-safety-fe96cd296674@sha256:a02d7f8ce8f75dcebe79d83fa89494309a7a3cf00fdd8db7ddd7f791831665bf
+ghcr.io/mesiasaerickd/pap-postgres:dev-r729@sha256:87a0af96022559fbe8c6f26619e62494e929f0a3ac0055448296f0d85fdd8f8f
+ghcr.io/mesiasaerickd/pap-redis:dev-r764@sha256:000ff14e526f1d693d7206f6df83dfd5beebbef1ee5e31bc723ea0fe3d9b6e5c
+ghcr.io/mesiasaerickd/pap-ee-control:dev-uid1001-098dab684c80@sha256:e2d97f24d27742d4d31b968c98024dd4811c11fbd20b94c0257441f06eed1108
+ghcr.io/mesiasaerickd/pap-ee-core:dev-r702@sha256:de883fb40bd04557b19d3fff596176ac246eb88e5e15aee2662a5d28be8f30d9

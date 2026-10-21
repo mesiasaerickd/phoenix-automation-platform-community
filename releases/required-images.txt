@@ -1,0 +1,6 @@
+localhost/alma-awx-operator:pap-security-r737
+localhost/pap-web-task:security-20261017-cve3-logging-test
+localhost/alma-postgres15:pap-security-r729
+localhost/pap-redis:8.10.2-alpine324-awx-compatible
+localhost/alma-awx-ee-core:receptor-169-hardened
+localhost/alma-awx-ee-core:uid1001-security-r702
