@@ -11,8 +11,6 @@
 
 **Automatización de infraestructura · Orquestación de Jobs · Execution Environments · Kubernetes**
 
-![Status](https://img.shields.io/badge/RC2-lab%20functional%20PASS-237a57)
-![Branch](https://img.shields.io/badge/branch-dev-blue)
 ![Base](https://img.shields.io/badge/containers-AlmaLinux%209-0b7d65)
 ![Kubernetes](https://img.shields.io/badge/orchestration-Kubernetes%20%2F%20K3s-326ce5)
 ![Ansible](https://img.shields.io/badge/automation-Ansible-232f3e)
