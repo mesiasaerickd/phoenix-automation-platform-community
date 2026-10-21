@@ -48,6 +48,63 @@ Desde el navegador de ese equipo abrir `http://172.16.205.131:18080`, ingresar c
 
 Prueba mínima: pods Web 3/3 y Task 4/4, PostgreSQL 1/1, migración Complete, interfaz de login accesible, autenticación y endpoints API HTTP 200. La ejecución de un Job Template real es un control posterior necesario para aceptación funcional.
 
+## Procedimiento completo de comprobación para un usuario nuevo
+
+### 1. Identificar el servidor y verificar el despliegue
+
+Desde el servidor que tiene acceso administrativo a K3s:
+
+```bash
+hostname
+hostname -I
+k3s kubectl get nodes -o wide
+k3s kubectl get pods -n pap-acceptance
+k3s kubectl get jobs -n pap-acceptance
+k3s kubectl get svc pap-security-service -n pap-acceptance
+```
+
+El ejemplo de este laboratorio es hostname `SVLNX02`, IP `172.16.205.131`. En cualquier otra instalación, sustituir namespace (`pap-acceptance`), recurso (`pap-security`) e IP por los reales. Esperamos Operator `1/1`, PostgreSQL `1/1`, Web `3/3`, Task `4/4`, Job de migración `Complete`.
+
+### 2. Recuperar la contraseña inicial
+
+El usuario predeterminado es `admin`. El Operator conserva la contraseña inicial en el Secret `<nombre-recurso>-admin-password`. Verificar su presencia:
+
+```bash
+k3s kubectl get secret pap-security-admin-password -n pap-acceptance -o name
+```
+
+Obtener la contraseña **solo en una terminal privada**:
+
+```bash
+k3s kubectl get secret pap-security-admin-password -n pap-acceptance -o jsonpath='{.data.password}' | base64 --decode
+printf '\n'
+```
+
+El valor es secreto; no pegarlo en chats, tickets ni logs, ni utilizar `set -x`. Proteger el acceso RBAC de lectura de Secrets y cambiar la credencial después del primer ingreso.
+
+### 3. Publicar el acceso temporal por IP y puerto
+
+En una terminal del servidor K3s, ejecutar:
+
+```bash
+k3s kubectl -n pap-acceptance port-forward svc/pap-security-service 18080:80 --address=172.16.205.131
+```
+
+En el navegador de un cliente de la **red de laboratorio controlada**, abrir `http://172.16.205.131:18080`. Iniciar sesión con `admin`. El comando permanece ejecutándose y se detiene con `Ctrl+C`. De ser necesario, permitir TCP/18080 en el firewall únicamente desde IPs autorizadas; no exponer HTTP a Internet. Para redes no confiables, preferir túnel SSH sobre 127.0.0.1 o HTTPS configurado por el administrador.
+
+### 4. Comprobar HTTP/API y ejecución
+
+Desde el host con acceso a la dirección de prueba:
+
+```bash
+curl -s -o /dev/null -w 'WEB_HTTP=%{http_code}\n' http://172.16.205.131:18080/
+curl -s -o /dev/null -w 'API_HTTP=%{http_code}\n' http://172.16.205.131:18080/api/v2/
+```
+
+En el laboratorio ambos fueron `HTTP 200`; después verificar inicio de sesión real y ejecutar un Job Template Ansible de prueba. Finalmente revisar `bash scripts/preflight.sh pap-acceptance post`. Que devuelva 200 no comprueba por sí solo el procesamiento de Jobs.
+
+**Los pasos anteriores no configuran certificados, dominios ni NGINX:** esas opciones de exposición permanente corresponden al administrador del sitio.
+
 ## Seguridad y aceptación pendientes
 
 Un `HTTP 200` no valida por sí solo autenticación ni ejecución Ansible. Probar inicio de sesión, API autenticada, Job Template real y comprobación `bash scripts/preflight.sh pap-acceptance post`; registrar resultados. Para la instalación medida, `cni0` se asignó **temporalmente** a zona `trusted` como diagnóstico de bloqueo de Metrics Server. No considerarlo configuración permanente ni solución endurecida; consultar `docs/K3S-METRICS-FIREWALLD-TROUBLESHOOTING.md` cuando se fusione. Disco provisionado de 47 GiB, inferior a los 60 GiB recomendados para laboratorio: capacidad pendiente de aceptación.
