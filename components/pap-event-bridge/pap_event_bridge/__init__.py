@@ -1,0 +1,1 @@
+"""PAP Event Bridge."""
