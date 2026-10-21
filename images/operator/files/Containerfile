@@ -1,0 +1,11 @@
+FROM localhost/alma-awx-operator:security-20261017-r4-test
+
+USER 0
+
+COPY --chmod=0644 main.yml \
+  /opt/awx-operator/roles/installer/defaults/main.yml
+
+COPY --chmod=0644 postgres.yaml.j2 \
+  /opt/awx-operator/roles/installer/templates/statefulsets/postgres.yaml.j2
+
+USER 1001

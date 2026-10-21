@@ -1,0 +1,48 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "LimitRange",
+      "metadata": {
+        "name": "pap-template-container-defaults",
+        "namespace": "pap-template"
+      },
+      "spec": {
+        "limits": [
+          {
+            "default": {
+              "cpu": "500m",
+              "memory": "1Gi"
+            },
+            "defaultRequest": {
+              "cpu": "25m",
+              "memory": "48Mi"
+            },
+            "type": "Container"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ResourceQuota",
+      "metadata": {
+        "name": "pap-template-quota",
+        "namespace": "pap-template"
+      },
+      "spec": {
+        "hard": {
+          "limits.cpu": "8",
+          "limits.memory": "12Gi",
+          "persistentvolumeclaims": "3",
+          "pods": "20",
+          "requests.cpu": "5",
+          "requests.memory": "8Gi",
+          "requests.storage": "10Gi"
+        }
+      }
+    }
+  ]
+}

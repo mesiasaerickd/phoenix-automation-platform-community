@@ -1,0 +1,152 @@
+{
+  "apiVersion": "awx.ansible.com/v1beta1",
+  "kind": "AWX",
+  "metadata": {
+    "name": "pap-security",
+    "namespace": "pap-template"
+  },
+  "spec": {
+    "admin_user": "admin",
+    "auto_upgrade": true,
+    "control_plane_ee_image": "localhost/alma-awx-ee-core:receptor-169-hardened",
+    "create_preload_data": false,
+    "ee_images": [
+      {
+        "image": "localhost/alma-awx-ee-core:uid1001-security-r702",
+        "name": "PAP EE Core"
+      }
+    ],
+    "ee_resource_requirements": {
+      "limits": {
+        "cpu": "1000m",
+        "memory": "1Gi"
+      },
+      "requests": {
+        "cpu": "250m",
+        "memory": "256Mi"
+      }
+    },
+    "garbage_collect_secrets": false,
+    "image": "localhost/pap-web-task",
+    "image_pull_policy": "Never",
+    "image_version": "security-20261017-cve3-logging-test",
+    "ingress_type": "none",
+    "init_container_image": "localhost/alma-awx-ee-core",
+    "init_container_image_version": "receptor-169-hardened",
+    "init_container_resource_requirements": {
+      "limits": {
+        "cpu": "300m",
+        "memory": "384Mi"
+      },
+      "requests": {
+        "cpu": "100m",
+        "memory": "192Mi"
+      }
+    },
+    "ipv6_disabled": false,
+    "loadbalancer_class": "",
+    "loadbalancer_ip": "",
+    "loadbalancer_port": 80,
+    "loadbalancer_protocol": "http",
+    "metrics_utility_console_enabled": false,
+    "metrics_utility_cronjob_gather_schedule": "@hourly",
+    "metrics_utility_cronjob_report_schedule": "@monthly",
+    "metrics_utility_enabled": false,
+    "metrics_utility_pvc_claim_size": "5Gi",
+    "no_log": true,
+    "postgres_image": "localhost/alma-postgres15",
+    "postgres_image_version": "pap-security-r729",
+    "postgres_keepalives": true,
+    "postgres_keepalives_count": 5,
+    "postgres_keepalives_idle": 5,
+    "postgres_keepalives_interval": 5,
+    "postgres_resource_requirements": {
+      "limits": {
+        "cpu": "400m",
+        "memory": "512Mi"
+      },
+      "requests": {
+        "cpu": "100m",
+        "memory": "256Mi"
+      }
+    },
+    "postgres_storage_class": "local-path",
+    "postgres_storage_requirements": {
+      "requests": {
+        "storage": "4Gi"
+      }
+    },
+    "projects_persistence": false,
+    "projects_storage_access_mode": "ReadWriteMany",
+    "projects_storage_size": "8Gi",
+    "redis_image": "localhost/pap-redis",
+    "redis_image_version": "8.10.2-alpine324-awx-compatible",
+    "redis_resource_requirements": {
+      "limits": {
+        "cpu": "100m",
+        "memory": "128Mi"
+      },
+      "requests": {
+        "cpu": "25m",
+        "memory": "32Mi"
+      }
+    },
+    "replicas": 1,
+    "route_tls_termination_mechanism": "Edge",
+    "rsyslog_resource_requirements": {
+      "limits": {
+        "cpu": "300m",
+        "memory": "512Mi"
+      },
+      "requests": {
+        "cpu": "100m",
+        "memory": "192Mi"
+      }
+    },
+    "service_type": "ClusterIP",
+    "set_self_labels": true,
+    "task_liveness_failure_threshold": 3,
+    "task_liveness_initial_delay": 5,
+    "task_liveness_period": 0,
+    "task_liveness_timeout": 1,
+    "task_manage_replicas": true,
+    "task_privileged": false,
+    "task_readiness_failure_threshold": 3,
+    "task_readiness_initial_delay": 20,
+    "task_readiness_period": 0,
+    "task_readiness_timeout": 1,
+    "task_replicas": 1,
+    "task_resource_requirements": {
+      "limits": {
+        "cpu": "550m",
+        "memory": "2Gi"
+      },
+      "requests": {
+        "cpu": "200m",
+        "memory": "1024Mi"
+      }
+    },
+    "uwsgi_processes": 1,
+    "web_liveness_failure_threshold": 3,
+    "web_liveness_initial_delay": 5,
+    "web_liveness_period": 0,
+    "web_liveness_timeout": 1,
+    "web_manage_replicas": true,
+    "web_readiness_failure_threshold": 3,
+    "web_readiness_initial_delay": 20,
+    "web_readiness_period": 0,
+    "web_readiness_timeout": 1,
+    "web_replicas": 1,
+    "web_resource_requirements": {
+      "limits": {
+        "cpu": "450m",
+        "memory": "1536Mi"
+      },
+      "requests": {
+        "cpu": "100m",
+        "memory": "768Mi"
+      }
+    },
+    "pap_postgres_allowed_cidr": ""
+  }
+}

@@ -1,0 +1,9 @@
+FROM localhost/alma-postgres15:ci
+
+USER root
+
+COPY --chmod=0755 entrypoint.sh /usr/local/bin/entrypoint.sh
+
+USER 26
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

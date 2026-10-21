@@ -1,0 +1,6 @@
+ghcr.io/phoenix-automation-platform/pap-operator
+ghcr.io/phoenix-automation-platform/pap-web-task
+ghcr.io/phoenix-automation-platform/pap-postgres
+ghcr.io/phoenix-automation-platform/pap-redis
+ghcr.io/phoenix-automation-platform/pap-ee-control
+ghcr.io/phoenix-automation-platform/pap-ee-core

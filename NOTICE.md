@@ -1,20 +1,15 @@
-# NOTICE — Origen y atribuciones
+# Avisos y atribuciones / Notices and Attribution
 
-**Phoenix Automation Platform (PAP)** es una iniciativa independiente de modernización y comunidad.
+PAP es una iniciativa independiente. Reconoce a AWX como proyecto de referencia y respeta las licencias y avisos de los componentes de terceros. La documentación comunitaria no garantiza que el código o las imágenes estén autorizados para redistribución sin una auditoría previa.
 
-## Proyecto de referencia
+---
 
-- **AWX** — https://github.com/ansible/awx
-- Licencia de AWX: **Apache License, Version 2.0**.
-- AWX es un proyecto upstream de Red Hat Ansible Automation Platform.
-- PAP no es una publicación oficial, afiliada ni respaldada por los titulares de las marcas AWX, Ansible o Red Hat.
+# Notices and Attribution (English)
 
-## Distribución y terceros
+Phoenix Automation Platform (PAP) is an independent community initiative drawing from [AWX](https://github.com/ansible/awx) and other open-source components.
 
-El software PAP se inspira en el ecosistema AWX y utiliza tecnologías como Ansible, Kubernetes, PostgreSQL, Redis y AlmaLinux, cada una sujeta a sus propias licencias y condiciones. Antes de publicar código o imágenes derivadas debe realizarse una revisión de archivos de licencia, avisos, recursos gráficos, dependencias y código modificado.
+AWX is distributed under the Apache License, Version 2.0. PAP is **not officially affiliated with, endorsed by, or sponsored by** Red Hat, AWX, or Ansible trademark holders.
 
-Esta lista es introductoria y **no sustituye un inventario completo de licencias de un paquete de distribución**. Cuando se incorporen fuentes, deberán añadirse las atribuciones y los avisos correspondientes, indicando los cambios realizados al código original.
+Any redistribution of modified upstream software must retain applicable license terms, copyright and NOTICE files, and prominent modification notices where required. Third-party dependencies, container images, fonts, graphics, and other assets must be reviewed separately for licensing and redistribution rights.
 
-## Identidad propia
-
-El nombre y los diseños de PAP identifican la iniciativa comunitaria. No se utilizan logotipos oficiales de AWX, Ansible o Red Hat como identidad del producto.
+This document is preliminary and does not replace a complete software bill of materials (SBOM), attribution inventory, or legal review for an actual release.
