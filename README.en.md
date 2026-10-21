@@ -14,7 +14,7 @@
 
 </div>
 
-> **Community project in preparation.** This repository contains community guidelines, documentation and proposals. Installable distribution sources will be added only after the relevant licensing, attribution, dependency and publication reviews.
+> **Community project in preparation.** This repository contains community guidelines, documentation and proposals. A public [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) candidate provides six public OCI images and an online installation path in the distribution branches. External end-to-end installation and redistribution compliance remain pending; it is not production-approved.
 
 ## ✨ About
 
@@ -41,11 +41,11 @@ flowchart TB
 
 ## ✅ Current status
 
-The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; it is not yet an installable software distribution.
+The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; RC1 contains an installation candidate but has not passed external end-to-end release certification.
 
 ## 🤝 How to contribute
 
-Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the `dev` integration branch. The `prd` branch is reserved for reviewed stable releases, while `contrib` contains community documentation. **Community branches exist:** `contrib`, `dev`, and `prd`. Default-branch selection and protection enforcement are pending.
+Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the `dev` integration branch. The `prd` branch is reserved for reviewed stable releases, while `contrib` contains community documentation. **Community branches exist:** `contrib`, `dev`, and `prd`. The default branch is `contrib`. Check [branch policy](docs/COMMUNITY-SETUP.md) and verify effective repository rules before promotion.
 
 ## 📚 Community documentation
 
@@ -59,6 +59,13 @@ Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the proje
 | [NOTICE.md](NOTICE.md) | Upstream and third-party attribution |
 | [LICENSE](LICENSE) | License text |
 | [docs/COMMUNITY-SETUP.md](docs/COMMUNITY-SETUP.md) | Planned `dev` / `prd` protection setup |
+
+## Technical and release closure
+
+- [Redis provenance, security and functional acceptance](docs/REDIS-CLOSURE.md) (Spanish)
+- [Release evidence and acceptance matrix](docs/RELEASE-CLOSURE.md) (Spanish)
+
+RC2 laboratory checks do not constitute external RC1 release validation.
 
 ## ⚖️ Origin and licensing
 
