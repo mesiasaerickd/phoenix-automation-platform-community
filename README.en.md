@@ -3,63 +3,255 @@
 <img src="docs/images/pap-banner.svg" alt="PAP — Phoenix Automation Platform" width="100%" />
 
 
-# 🔥 Phoenix Automation Platform (PAP)
-### Community Edition — Contributions hub
+**[Versión en español](README.md) · English version**
 
-**[Español](README.md) · [English](README.en.md)**
+<sub><code>PAP</code> · Phoenix Automation Platform</sub>
 
-**Ansible · Kubernetes / K3s · AlmaLinux · Execution Environments**
+### Phoenix Automation Platform
+
+**Infrastructure automation · Job orchestration · Execution Environments · Kubernetes**
+
+![Status](https://img.shields.io/badge/RC2-lab%20functional%20PASS-237a57)
+![Branch](https://img.shields.io/badge/branch-dev-blue)
+![Base](https://img.shields.io/badge/containers-AlmaLinux%209-0b7d65)
+![Kubernetes](https://img.shields.io/badge/orchestration-Kubernetes%20%2F%20K3s-326ce5)
+![Ansible](https://img.shields.io/badge/automation-Ansible-232f3e)
+
+[Overview](#-what-is-pap) · [Architecture](#-reference-architecture) · [Technology](#-technology-and-components) · [Improvements](#-what-has-evolved) · [Documentation](#-documentation-map) · [Get started](#-getting-started)
 
 </div>
 
-> **Community project in preparation.** This repository contains community guidelines, documentation and proposals. Installable distribution sources will be added only after the relevant licensing, attribution, dependency and publication reviews.
+---
 
-## ✨ About
+## ✨ What is PAP?
 
-**Phoenix Automation Platform (PAP)** is an independent initiative based on **AWX** and related open-source projects. It builds on familiar Ansible capabilities — web UI, REST API, inventories, projects, templates and Jobs — while evolving container packaging, software traceability and operational experience on Kubernetes/K3s.
+**PAP — Phoenix Automation Platform** is an independent distribution and technical evolution based on **AWX**, designed to manage Ansible automation projects, inventories, credentials, templates, workflows and Execution Environments (EEs) on **Kubernetes/K3s**.
 
-PAP began as a controlled modernization effort for inherited AWX 24.6.1 image and dependency baselines, with AlmaLinux-based images and end-to-end lab testing.
+PAP builds on **AWX 24.6.1** and its ecosystem. The project began as an effort to modernize container images and inherited dependencies in a controlled, reproducible way: rather than changing isolated packages in a way that could break the application, PAP emphasizes **AlmaLinux-based image rebuilds, dependency review, traceable packaging and end-to-end functional testing**.
 
-## 🏗 Architecture
+**Context:** PAP retains AWX automation concepts while developing its own improvements to images, dependencies and user experience. AWX lists version 24.6.1 (July 2024) as its latest published release and notes that releases are paused during a major refactoring of the upstream project.
+
+### Design goals
+
+| Goal | PAP approach |
+|---|---|
+| **Modernize underlying technology** | AlmaLinux OCI images and build-controlled dependencies |
+| **Preserve familiar AWX capabilities** | Web UI, REST API, inventories, SCM projects, job templates and workflows |
+| **Improve reproducibility** | OCI digests, installation scripts, preflight checks and GitHub Actions |
+| **Support custom EEs** | Control Plane EE, PAP EE Core and independent EEs built with Podman/Ansible Builder |
+| **Clarify responsibilities** | PAP provides software; the infrastructure administrator manages the cluster, network, certificates, storage and host services |
+| **Evolve the experience** | PAP branding and frontend enhancements, including multilingual work as coverage is validated |
+
+## 🏗 Reference architecture
+
+<details open>
+<summary><strong>Expand / collapse the architecture diagram</strong></summary>
 
 ```mermaid
 flowchart TB
-    U["Operator / user"] --> W["PAP Web / REST API"]
-    O["Kubernetes Operator"] -. reconciles .-> W
-    O -. reconciles .-> T["PAP Task"]
-    W <--> T
-    W --> D["PostgreSQL"]
-    T --> D
-    T <--> Q["Redis"]
-    T --> R["Control Plane EE / Receptor"]
-    R --> J["Job Pod / Execution Environment"]
-    J --> N["Authorized targets"]
-    G["SCM / Git"] --> T
+    U["Administrators and operators"] --> TLS["HTTPS / reverse proxy or Ingress\nprovided by infrastructure"]
+    TLS --> SVC["PAP Service — ClusterIP :80"]
+
+    subgraph K8S["Kubernetes / K3s"]
+      OP["PAP Operator\ncustom resource reconciliation"]
+      SVC --> WEB["PAP Web\nUI + REST API :8052"]
+      WEB <--> TASK["PAP Task\ndispatcher / scheduler"]
+      TASK <--> REDIS["Redis"]
+      TASK --> REC["Control Plane EE\nReceptor · UID 1001"]
+      WEB --> PG["PostgreSQL 15\npersistent volume"]
+      TASK --> PG
+      OP -. manages .-> WEB
+      OP -. manages .-> TASK
+      OP -. manages .-> PG
+      REC --> J["Job Pod / Execution Environment\nAnsible Runner + Ansible"]
+    end
+
+    SCM["Git / SCM projects"] --> TASK
+    OCI["OCI image registry\nor node-local imports"] --> J
+    J --> HOSTS["Authorized infrastructure targets\nLinux · UNIX · services · APIs"]
 ```
 
-## ✅ Current status
+</details>
 
-The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; it is not yet an installable software distribution.
+**Zoom:** GitHub's Mermaid viewer may offer an expanded view. You can also paste the Mermaid source into [Mermaid Live Editor](https://mermaid.live/) for zoom and SVG export. This is a logical reference architecture rather than a fixed physical design.
 
-## 🤝 How to contribute
+### How a Job runs
 
-Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the planned `dev` integration branch once enabled. The planned `prd` branch will hold reviewed stable releases. **No community branches have been created yet.**
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Operator
+    participant Web as PAP Web / API
+    participant Task as PAP Task
+    participant Git as SCM repository
+    participant R as Receptor
+    participant EE as Job Pod / EE
+    participant Target as Authorized target
+    User->>Web: Launch Job Template
+    Web->>Task: Execution request
+    opt SCM content needs an update
+        Task->>Git: Synchronize project
+        Git-->>Task: Source revision ready
+    end
+    Task->>R: Prepare execution
+    R->>EE: Create EE job
+    EE->>Target: Run playbook/modules
+    Target-->>EE: Result
+    EE-->>Task: Events and status
+    Task-->>Web: Job output and history
+    Web-->>User: Successful / Failed / Error
+```
 
-## 📚 Community documentation
+The initial job run may first synchronize SCM project content. Subsequent runs may reuse that revision, depending on the project's synchronization policy.
 
-| File | Purpose |
-| --- | --- |
-| [README.md](README.md) | Spanish introduction |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution and review process |
-| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community expectations |
-| [SECURITY.md](SECURITY.md) | Responsible security reporting |
-| [SUPPORT.md](SUPPORT.md) | Community support scope |
-| [NOTICE.md](NOTICE.md) | Upstream and third-party attribution |
-| [LICENSE](LICENSE) | License text |
-| [docs/COMMUNITY-SETUP.md](docs/COMMUNITY-SETUP.md) | Planned `dev` / `prd` protection setup |
+## ⚙️ Technology and components
 
-## ⚖️ Origin and licensing
+| Layer | Technology / reference | Purpose |
+|---|---|---|
+| Orchestration | Kubernetes / K3s | Pods, Deployments, Services, Jobs, PVCs and NetworkPolicies |
+| Operator | AWX-compatible custom resource operator | Reconciles PAP's declared application components |
+| Container OS | **AlmaLinux** | Modernized container base; verify each release's image digest |
+| Automation core | AWX **24.6.1**, Ansible Core, Ansible Runner | Job orchestration and automation execution |
+| Job transport | **Receptor 1.6.9**, tested in RC2 | Control-plane execution transport and Unix socket |
+| Database | PostgreSQL **15** with persistent volume | Application state |
+| Supporting services | Redis, rsyslog | Task supporting components |
+| Frontend | Web UI, REST API and customizations | Platform experience, identity and multilingual evolution |
+| Images | OCI, GHCR, Podman, containerd | Building, distributing and running EEs |
+| CI / software quality | GitHub Actions, Trivy, preflight | Build checks, findings and change traceability |
 
-PAP acknowledges [AWX](https://github.com/ansible/awx) as an upstream reference under the **Apache License 2.0**. PAP is an independent initiative and not an official or endorsed upstream distribution. See [NOTICE.md](NOTICE.md) and [LICENSE](LICENSE).
+### Container structure
 
-<div align="center"><sub>Build reproducible · Execute with control · Improve with community</sub></div>
+| Component | Role |
+|---|---|
+| **Operator** | Deploys and reconciles application resources |
+| **Web** | Web UI, API, identities, projects and templates |
+| **Task** | Job scheduling, coordination and dispatch |
+| **Control Plane EE** | Receptor and execution-control functions |
+| **Job EE** | Temporary container with Ansible, Runner, collections and dependencies |
+| **PostgreSQL** | Persistent application data |
+| **Redis / rsyslog** | Supporting services |
+
+## 🚀 What has evolved?
+
+| Area | Motivation | PAP approach |
+|---|---|---|
+| Container images | Inherited package and dependency constraints | AlmaLinux rebuilds and pinned image references |
+| Software security | Dependency and scanner findings | Reviewed dependencies, rebuilds, scans and change history |
+| Execution | Reliable controller identity and EE compatibility | UID 1001, Receptor and Git fixes; custom EE support |
+| Troubleshooting | Easier distinction between application and infrastructure issues | Preflight, API and Job validation, actionable findings |
+| Capacity | Jobs constrained by resource quotas | Documented requests, limits, quotas and capacity profiles |
+| User experience | Platform branding and interface modernization | PAP identity, frontend adjustments and multilingual evolution |
+| Deployment | Repeatable application deployment | Online installer and parameterized Kubernetes manifests |
+| Change management | Clear promotion path | `dev` and `prd` branches with reviewed changes |
+
+### Scaling Pods and resources
+
+PAP uses Kubernetes scheduling and resource management. The number of concurrent Jobs depends on available compute, storage, EE Pod requirements, quotas and workload characteristics. See the [capacity reference](docs/CAPACITY-PREREQUISITES.md) for baseline profiles and recommended evaluation steps.
+
+## ✅ RC2 functional evidence
+
+| Test | Observed result |
+|---|---|
+| Online installation on a clean VM with K3s/Operator | Completed |
+| PostgreSQL and AWX 24.6.1 migration | `Complete 1/1` |
+| API `/api/v2/ping/` | HTTP **200** |
+| Task / Web | Task **4/4**, Web **3/3** |
+| Control Plane | UID **1001**, Receptor 1.6.9 and socket validated |
+| Custom EEs | Registered and made available |
+| Functional Jobs | **Two successful Jobs** using custom EEs, reported by the lab operator |
+| Independent EE | Built with Podman/Ansible Builder, imported into K3s containerd, tested with `sshpass` and POSIX/General collections |
+| Web access | Internal HTTPS used; operator reported that the UI/CSRF issue no longer occurred with the stable address |
+
+Infrastructure findings and environment-specific recommendations are documented separately for the infrastructure administrator.
+
+## 🧭 Scope and infrastructure responsibilities
+
+**PAP provides the software, application components and reference documentation.** Cluster preparation, host networking, firewall, DNS, TLS, storage, backup and capacity planning are carried out by the infrastructure team responsible for the installation. Infrastructure guides provide requirements and helpful findings rather than silently changing host settings.
+
+| PAP software | Installer's infrastructure team |
+|---|---|
+| OCI images, online installer, manifests and preflight | Kubernetes/K3s cluster, nodes, CNI and connectivity |
+| Application logs and diagnostic findings | Network/firewall/SELinux policies and TLS/DNS |
+| Jobs, EEs and functional acceptance checks | CPU, RAM, disks, volumes, backups and capacity |
+| Reference requirements and recommended checks | Review, approval and application of infrastructure changes |
+
+## 📚 Documentation map
+
+| Document | What it covers |
+|---|---|
+| [`INSTALLATION.md`](INSTALLATION.md) | Online installation steps, parameters and acceptance checks |
+| [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) | General deployment prerequisites |
+| [`docs/CAPACITY-PREREQUISITES.md`](docs/CAPACITY-PREREQUISITES.md) | CPU, memory, disks, quotas and scaling capacity |
+| [`docs/NETWORKING.md`](docs/NETWORKING.md) | Connectivity matrix and network prerequisites |
+| [`docs/NETWORK-FIREWALL-PREREQUISITES.md`](docs/NETWORK-FIREWALL-PREREQUISITES.md) | Laboratory findings and firewall/CNI guidance |
+| [`docs/SECURITY.md`](docs/SECURITY.md) | Software vulnerability scan findings |
+| [`docs/INSTALL_ONLINE.md`](docs/INSTALL_ONLINE.md) | Online deployment reference |
+| [`scripts/README.md`](scripts/README.md) | Installer helper scripts |
+
+### Key technical files
+
+| Path | Description |
+|---|---|
+| [`scripts/install-online.sh`](scripts/install-online.sh) | Online installation entry point |
+| [`scripts/install-common.sh`](scripts/install-common.sh) | Shared online deployment flow |
+| [`scripts/preflight.sh`](scripts/preflight.sh) | Read-only prerequisite and post-deployment checks |
+| [`scripts/configure-installation.py`](scripts/configure-installation.py) | Render installation parameters |
+| [`scripts/configure-images.py`](scripts/configure-images.py) | Prepare OCI image references |
+| [`scripts/check-online.py`](scripts/check-online.py) | Validate online manifests |
+| [`scripts/configure-ghcr.sh`](scripts/configure-ghcr.sh) | Assist with authorized GHCR access |
+| [`k8s/awx.yaml`](k8s/awx.yaml) | PAP/AWX custom resource and baseline settings |
+| [`k8s/operator.yaml`](k8s/operator.yaml) | Operator deployment manifest |
+| [`k8s/resource-policies.yaml`](k8s/resource-policies.yaml) | Resource quotas and related policies |
+| [`releases/ghcr-digests-dev.txt`](releases/ghcr-digests-dev.txt) | Development candidate images pinned to digests |
+| [`releases/required-images.txt`](releases/required-images.txt) | Required component images |
+| [`.github/workflows/`](.github/workflows/) | CI workflows |
+| [`images/`](images/) | Container image definitions and customizations |
+
+## 🧪 Getting started
+
+The tested RC2 deployment path is **online**. It expects a prepared Kubernetes/K3s cluster and approved access to the relevant OCI images.
+
+```bash
+# From the authorized dev checkout:
+bash scripts/preflight.sh pap-acceptance pre
+
+# Review the findings with the infrastructure administrator.
+PAP_NETWORK_APPROVED=yes bash scripts/install-online.sh pap-acceptance
+
+# Verify installation:
+bash scripts/preflight.sh pap-acceptance post
+kubectl get pods -n pap-acceptance
+```
+
+See [INSTALLATION.md](INSTALLATION.md) for full configuration details.
+
+## 🔀 Release workflow
+
+```mermaid
+flowchart LR
+    D["dev\nDevelopment + CI + tests"] --> PR["Change review\nValidation + approval"] --> P["prd\nPromoted code"]
+```
+
+`dev` holds ongoing development and testing; `prd` receives the validated software through the controlled release process. External EEs remain independently managed artifacts.
+
+## 🤝 Community and contributions
+
+Community proposals, issues, contribution policies and documentation are being prepared in [**Phoenix Automation Platform Community**](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community). Distribution sources will undergo a separate publication and licensing review.
+
+## 📄 Origins, licenses and contributions
+
+PAP is based on **AWX** and related open-source technologies. The AWX project uses the **Apache License 2.0**, which permits derivatives and redistribution subject to conditions regarding notices, modifications and attribution. PAP uses its own identity while acknowledging the originating projects and their communities. Their trademarks remain governed by their respective policies.
+
+References: [AWX project](https://github.com/ansible/awx) · [AWX license](https://github.com/ansible/awx/blob/devel/LICENSE.md) · [AWX README / branding](https://github.com/ansible/awx/blob/devel/README.md).
+
+To report a PAP software issue, include the software version/commit, image digest, reproduction steps and sanitized logs.
+
+---
+
+<div align="center">
+
+**PAP — Phoenix Automation Platform**
+
+*Build reproducible · Execute with control · Improve with evidence*
+
+</div>

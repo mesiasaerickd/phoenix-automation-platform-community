@@ -1,0 +1,14 @@
+FROM localhost/alma-awx-ee-core:receptor-169-hardened
+
+USER 0
+
+RUN set -eux; \
+    if ! getent passwd 1001 >/dev/null; then \
+      echo 'pap-runner:x:1001:0:PAP Execution User:/runner:/bin/sh' >> /etc/passwd; \
+    fi; \
+    mkdir -p /runner; \
+    chown 1001:0 /runner
+
+ENV HOME=/runner
+WORKDIR /runner
+USER 1001
