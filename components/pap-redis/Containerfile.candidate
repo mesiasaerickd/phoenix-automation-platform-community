@@ -1,0 +1,13 @@
+# CANDIDATE ONLY: reconstructed from the published PAP Redis image history.
+# Do not publish without completing NOTICE/source obligations and validation.
+FROM docker.io/library/redis:8.10.2-alpine AS upstream
+FROM docker.io/library/alpine:3.24
+RUN apk update && apk upgrade --no-cache && \
+    apk add --no-cache ca-certificates libssl3 libcrypto3 libstdc++ libgcc su-exec && \
+    mkdir -p /data /var/run/redis && chmod 777 /var/run/redis
+COPY --from=upstream /usr/local/bin/redis-server /usr/local/bin/redis-server
+COPY --from=upstream /usr/local/bin/redis-cli /usr/local/bin/redis-cli
+COPY pap-entrypoint.sh /usr/local/bin/pap-entrypoint.sh
+RUN chmod 0755 /usr/local/bin/pap-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/pap-entrypoint.sh"]
+CMD ["redis-server"]
