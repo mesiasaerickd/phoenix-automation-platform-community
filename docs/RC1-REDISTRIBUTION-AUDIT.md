@@ -34,3 +34,26 @@ Los totales incluyen paquetes repetidos entre imágenes. La ausencia de licencia
 La versión **v0.1.0-rc1** sigue siendo un **pre-release**. No presentarla como verificada legalmente, certificada, exenta de vulnerabilidades ni homologada para producción. Mantener licencias y avisos originales. Resolver los puntos anteriores antes de declarar completa la auditoría.
 
 Este documento es un registro técnico para revisión comunitaria y no constituye dictamen jurídico.
+
+
+## Evidencia complementaria: identidad del binario Redis
+
+Comparación ejecutada en SVLNX01 entre `ghcr.io/phoenix-automation-platform/pap-redis:dev-20261020` y `docker.io/library/redis:8.10.2-alpine`:
+
+- Ambas imágenes ejecutan Redis **8.10.2**.
+- SHA256 del archivo `/usr/local/bin/redis-server` en ambas: `df1291685ab15c4708c5556298146a93f498387aa6265aa0988da88d9952e41d`.
+- Resultado **REDIS_BINARY_MATCH=PASS**: los dos ejecutables comparados tienen contenido idéntico.
+- La imagen oficial inspeccionada utiliza Alpine 3.23.6; la imagen PAP utiliza Alpine 3.24.2.
+- No se encontraron archivos LICENSE/COPYING/NOTICE de Redis en `/usr/local`, `/usr/share` o `/opt` de la imagen oficial durante la comprobación. **Ausencia de avisos en esas rutas no exime de obligaciones de redistribución.**
+- No se ha demostrado todavía la procedencia exacta del paso de copia en el proceso de construcción de PAP, aunque la identidad del binario con el oficial queda confirmada.
+
+### Acciones de cumplimiento pendientes para Redis
+
+1. Identificar el commit/tag de fuente Redis 8.10.2 y conservar su licencia auténtica y avisos de copyright, obtenidos de fuente oficial, sin editar el texto legal.
+2. Documentar la elección de licencia redistributiva (p. ej., AGPLv3 si procede), verificar sus obligaciones con un especialista y facilitar el código fuente correspondiente y las instrucciones/oferta aplicables.
+3. Añadir una receta pública reproducible del contenedor Redis, indicando base Alpine y origen verificado del binario.
+4. Incorporar avisos/atribuciones a la distribución futura; los digests de RC1 **no cambian** por este documento.
+
+### Estado
+
+La comprobación de hashes resuelve la **identidad del ejecutable**, no completa la auditoría de licencias. No atribuir certificación legal o reproducibilidad al RC1 por este resultado.
