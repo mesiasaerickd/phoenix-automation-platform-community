@@ -19,3 +19,21 @@ Alpine 3.24.2 is a distinct distribution with 20 installed APK packages. The RC1
 5. Review applicable AGPLv3, GPLv2, LGPL, MPL and other obligations, including sources/installation information where required, with a qualified reviewer. Do not declare legal compliance based only on URL lists or package metadata.
 
 Do not replace the published release images or the running cluster during this audit.
+
+## Verificación adicional — 20 de octubre de 2026
+
+Se compararon con SHA256 **ambos** ejecutables presentes en la imagen PAP contra `docker.io/library/redis:8.10.2-alpine`, obteniendo coincidencia exacta:
+
+- `redis-server`: `df1291685ab15c4708c5556298146a93f498387aa6265aa0988da88d9952e41d`
+- `redis-cli`: `b3b11461c9b2e376bea58d43afdefa46d1336c3b2a0cd6738feb1fbe735add19`
+
+**BINARY_IDENTITY=PASS (2/2).** No verifica por sí solo los avisos, todas las fuentes correspondientes o la reproducibilidad de la imagen.
+
+### Bloqueadores para concluir cumplimiento
+
+- El archivo de fuentes Redis completo y el paquete Alpine GPL/LGPL ya figuran adjuntos en el RC1; se verificó su integridad. Falta auditoría completa de textos de licencia, derechos de autor, fuentes y obligaciones de paquetes restantes (incluidos MPL/MIT/Apache y demás).
+- Falta agregar los avisos exigibles y la información de fuentes en una nueva imagen y verificar su presencia.
+- Falta fijar digests de imágenes base y resolver los parámetros de compilación / snapshot APK para asegurar reproducción.
+- Falta ejecutar prueba de compilación y ejecución aislada, no en el clúster actual.
+
+No presentar el RC1 como certificado ni el PR candidato como completo hasta satisfacer estos controles.
