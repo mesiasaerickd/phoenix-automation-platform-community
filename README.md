@@ -11,8 +11,6 @@
 
 **Automatización de infraestructura · Orquestación de Jobs · Execution Environments · Kubernetes**
 
-![Status](https://img.shields.io/badge/RC2-lab%20functional%20PASS-237a57)
-![Branch](https://img.shields.io/badge/branch-dev-blue)
 ![Base](https://img.shields.io/badge/containers-AlmaLinux%209-0b7d65)
 ![Kubernetes](https://img.shields.io/badge/orchestration-Kubernetes%20%2F%20K3s-326ce5)
 ![Ansible](https://img.shields.io/badge/automation-Ansible-232f3e)
@@ -150,22 +148,6 @@ La primera ejecución puede requerir actualizar contenido SCM del proyecto. Los 
 ### Escalabilidad: Pods y recursos
 
 PAP utiliza el modelo de escalado de Kubernetes, pero aumentar réplicas o cuotas **no aumenta automáticamente la capacidad física**. Los Jobs requieren CPU, RAM, almacenamiento y capacidad del clúster, además de políticas adecuadas. Las cuotas, requests, limits y condiciones de RollingUpdate se detallan en [dimensionamiento](docs/CAPACITY-PREREQUISITES.md). Las pruebas RC2 verificaron la funcionalidad; los perfiles de recursos ayudan al administrador a dimensionar su instalación.
-
-## ✅ Evidencia funcional — RC2 (laboratorio)
-
-| Prueba | Resultado observado |
-|---|---|
-| Instalación online en VM limpia, K3s y Operator | Realizada |
-| PostgreSQL y migración AWX 24.6.1 | `Complete 1/1` |
-| API `/api/v2/ping/` | HTTP **200** |
-| Contenedores Task/Web | Task **4/4**, Web **3/3** |
-| Control Plane | UID **1001**, Receptor 1.6.9 y socket verificados |
-| EE predefinido y EE externo | Registrados y disponibles para pruebas |
-| Jobs con EE personalizados | **Dos Jobs terminados exitosamente**, reportados por el operador del laboratorio |
-| EE externo | Construido con Podman/Ansible Builder; importado en K3s/containerd; probado con `sshpass` y colecciones POSIX/General |
-| Acceso web | HTTPS interno utilizado; se reportó desaparición del error de UI/CSRF tras el cambio de dirección |
-
-Los hallazgos del entorno de laboratorio y las recomendaciones de configuración se encuentran en la documentación técnica de referencia para el administrador.
 
 ## 🧭 Responsabilidades y requisitos de infraestructura
 
