@@ -56,7 +56,7 @@ flowchart TB
 
 ## ✅ Estado del proyecto
 
-La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo migración, interfaz/API y Jobs ejecutados desde dos Execution Environments personalizados. La instalación integral más reciente y sus pruebas funcionales se completaron satisfactoriamente. Véase el acta de cierre técnico de laboratorio.
+La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo migración, interfaz/API y Jobs ejecutados desde dos Execution Environments personalizados. La instalación integral más reciente y sus pruebas funcionales se completaron satisfactoriamente. 
 
 ## 🤝 Cómo contribuir
 
@@ -66,7 +66,7 @@ La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo
 4. Describe los cambios, las pruebas y los posibles impactos.
 5. El mantenimiento revisará y aceptará cada aporte antes de incluirlo.
 
-La rama estable `prd` queda reservada para promociones revisadas; `contrib` alberga documentación y reglas. **Ramas comunitarias creadas:** `contrib`, `dev` y `prd`. La rama predeterminada es `contrib`. Consulta [la política de ramas](docs/COMMUNITY-SETUP.md) y confirma en GitHub la aplicación efectiva de las protecciones antes de cualquier promoción. El cierre técnico de instalación de laboratorio está registrado en el acta general.
+La rama estable `prd` queda reservada para promociones revisadas; `contrib` alberga documentación y reglas. **Ramas comunitarias creadas:** `contrib`, `dev` y `prd`. La rama predeterminada es `contrib`. Consulta [la política de ramas](docs/COMMUNITY-SETUP.md) y confirma en GitHub la aplicación efectiva de las protecciones antes de cualquier promoción.
 
 ## 📚 Documentación de la comunidad
 
@@ -83,12 +83,9 @@ La rama estable `prd` queda reservada para promociones revisadas; `contrib` albe
 
 ## Cierre técnico y de publicación
 
-- [Redis: procedencia, seguridad y aceptación funcional](docs/REDIS-CLOSURE.md)
-- [Matriz de cierre y evidencia de publicación](docs/RELEASE-CLOSURE.md)
 
 La instalación y las pruebas funcionales finales se cerraron satisfactoriamente en laboratorio, según confirmación del responsable. Los digests de RC1 se conservan como referencias históricas de esa publicación.
 
-[Acta de cierre general de Phoenix](docs/GENERAL-CLOSURE.md): instalación y validación funcional completadas, cierre técnico aceptado.
 
 ## ⚖️ Origen y licencias
 
