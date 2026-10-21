@@ -1,65 +1,44 @@
 # Acta de cierre general — Phoenix Automation Platform (PAP)
 
-**Corte de información:** 20 de octubre de 2026 (hora de Perú).  
-**Estado:** cierre documental realizado; cierre de compilación del siguiente candidato **sujeto a confirmación**; homologación de instalación externa **no declarada**.
+**Fecha de cierre:** 21 de octubre de 2026  
+**Estado:** **CERRADO — instalación y pruebas funcionales satisfactorias en laboratorio.**
 
-## 1. Alcance del cierre
-Esta acta consolida el trabajo técnico y documental existente, evitando abrir nuevamente controles ya verificados. Abarca la distribución comunitaria PAP basada en AWX 24.6.1, Kubernetes/K3s, Operator, Web/Task, PostgreSQL, Redis y Execution Environments. No sustituye las pruebas de cada versión específica ni implica certificación por el proyecto upstream.
+## Resumen ejecutivo
 
-## 2. Resultado por dominio
+El responsable del proyecto confirma la finalización satisfactoria de las pruebas de generación de imágenes, instalación y validación funcional efectuadas en la ventana de trabajo técnica. Con esta confirmación se da por **cerrada la aceptación técnica del laboratorio** y la documentación comunitaria de Phoenix Automation Platform.
 
-| Dominio | Estado y evidencia |
+**Duración observada de la última instalación completa:** **20 minutos**, de inicio a fin, según la medición comunicada por el responsable. Es un resultado de una ejecución, no un compromiso de duración en otros entornos.
+
+## Componentes y controles aceptados
+
+| Área | Resultado de cierre |
 | --- | --- |
-| Arquitectura y documentación | Documentadas en los README y guías técnicas de ramas de distribución |
-| Flujo de contribución | **CERRADO:** ramas `contrib`, `dev`, `prd`; cambios README/CONTRIBUTING integrados mediante PR #18 |
-| Redis | **CERRADO técnicamente:** Redis 8.10.2, hashes de ambos ejecutables iguales al upstream, AGPLv3 identificada y pruebas básicas reportadas; PR #19 |
-| Operator, Web, Task, PostgreSQL y EE | RC2 **funcional en laboratorio**, según evidencias ya registradas; no extrapolar automáticamente a RC1 o a futuras imágenes |
-| RC1 pública | Seis manifiestos GHCR accesibles anónimamente y digests inmutables documentados en `prd/releases/ghcr-digests-v0.1.0-rc1.txt` |
-| Instalador online | Scripts, preflight y renderizado documentados; ensayos de manifiestos **no sustituyen** una instalación externa completa |
-| Seguridad y terceros | Políticas LICENSE/NOTICE/SECURITY publicadas; conservar evaluación de vulnerabilidades y obligaciones por paquete como parte del control general de cada release |
-| Candidato de imágenes posterior | **PENDIENTE CONFIRMACIÓN EXTERNA** desde el flujo de construcción y validación que está ejecutándose en paralelo |
+| Arquitectura PAP, Kubernetes/K3s | Documentación cerrada |
+| Operator, Web y Task | Instalación y validación funcional completadas; resultado satisfactorio comunicado |
+| PostgreSQL y migración | Integrados en la prueba de instalación aceptada |
+| Redis 8.10.2 | **CERRADO**: versión, identidad SHA-256 de ambos binarios, opción AGPLv3 identificada, conectividad y revisión técnica documentadas ([detalle](REDIS-CLOSURE.md)) |
+| Execution Environments y ejecución de Jobs | Pruebas funcionales completadas y aprobadas por el responsable |
+| Generación y publicación de imágenes | Pruebas completadas y confirmadas por el responsable; no se transcriben nuevos digests sin su manifiesto de construcción |
+| Instalador online | Instalación integral completada satisfactoriamente según confirmación final |
+| README, contribuciones y documentación | Revisados y publicados en el repositorio comunitario |
 
-## Tiempo observado de instalación
+## Evidencia y alcance
 
-**Última instalación completa de laboratorio: 20 minutos en total**, desde el inicio hasta la finalización del proceso, según la medición reportada por el responsable de la prueba.
+Este cierre registra formalmente el **resultado comunicado por el responsable que ejecutó las pruebas**. Las pruebas se realizaron en otra ventana de trabajo, por lo que esta acta no inventa números de Jobs, trazas, logs, versiones de imágenes posteriores a RC1 ni resultados de CI no incorporados aquí.
 
-Este dato es una **medición histórica de una ejecución**, no un SLA, promedio estadístico ni garantía de duración. Puede variar por CPU, RAM, almacenamiento, conectividad, descarga de imágenes, desempeño de Kubernetes y migraciones. No extrapolar este tiempo a una instalación nueva sin medición.
+Las imágenes **RC1** tienen referencias históricas inmutables en [el manifiesto de digests de `prd`](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/blob/prd/releases/ghcr-digests-v0.1.0-rc1.txt). No se atribuyen esos digests a una compilación posterior sin evidencia. El estado de aceptación **no cambia retroactivamente** los binarios ni las notas de un release anterior.
 
-## 3. Única entrada para cerrar el paquete de imágenes nuevo
-Registrar, una vez confirmado en el flujo de construcción: etiqueta/versionado del candidato, commit Git, resultado CI, nombres de las seis imágenes, digests OCI publicados, accesibilidad anónima, resultado de escaneo y problemas bloqueantes (si los hay). Si se decide reutilizar digests RC1, registrar explícitamente que son los mismos; no asumirlo.
+## Decisión de cierre
 
-La confirmación podrá incorporarse al siguiente PR/release sin reabrir la verificación de identidad de Redis, ya concluida.
+**Cierre técnico y documental del laboratorio: APROBADO.** La instalación completa, las pruebas funcionales y la validación de imágenes fueron confirmadas como satisfactorias. **Sin incidencias técnicas abiertas reportadas en esta aceptación.** Redis queda definitivamente cerrado dentro del alcance de pruebas registrado y no requiere repetir sus validaciones de identidad.
 
-## 4. Puerta independiente: homologación del instalador
-Para anunciar la nueva versión como **instalable y probada de extremo a extremo**, se necesita un reporte de instalación desde cero en un clúster aislado, utilizando exactamente los digests del candidato, que cubra:
-- Preflight y preparación de recursos autorizados;
-- Operator y migración de PostgreSQL;
-- Web/API, inicio de sesión y Task;
-- Red interna (Task ↔ Web, base de datos y Redis);
-- Job Ansible real con un EE publicado, resultado y eventos en UI/API.
-
-Estas comprobaciones pueden reutilizarse **si ya están documentadas para los mismos digests y manifiestos**. No exigir duplicarlas sin justificación. No probar sobre producción.
-
-## 5. Condiciones de publicación y responsables
-- `contrib`: documentación y participación; `dev`: integración; `prd`: promoción aprobada por Pull Request. `main` no forma parte del flujo.
-- Un release debe referenciar commit, artefactos, hashes/digests, instrucciones, notas y limitaciones conocidas.
-- La revisión de licencias de terceros y la trazabilidad de compilación se mantienen en el proceso transversal de distribución; no presentarlas como falla de Redis.
-- No declarar *Production Ready* exclusivamente por una compilación, un `PONG`, el estado `Running` o un escaneo aislado.
-
-## 6. Decisión de cierre
-
-**Aprobado para archivo documental:** arquitectura, contribución, Redis y el estado conocido de RC1/RC2.
-
-**A la espera de confirmación:** imágenes del nuevo candidato (en validación paralela). La generación y publicación son un hito; la aceptación de instalación, otro.
-
-**No se autorizan cambios en servidores, imágenes existentes o la rama `prd` mediante esta acta.** El cierre final de la versión se documentará mediante la confirmación de CI y, en su caso, la aceptación del instalador. Esto evita tareas nuevas innecesarias y conserva los límites de lo realmente verificado.
+PAP sigue siendo un proyecto comunitario independiente, sin certificación ni aval de Red Hat, Ansible o AWX. Este cierre no constituye auditoría legal externa, certificación universal de ausencia de vulnerabilidades ni garantía de desempeño en cualquier infraestructura; esos conceptos no se presentan como incidencias abiertas de la instalación aceptada.
 
 ## Referencias
 
-- [Matriz de release](RELEASE-CLOSURE.md)
-- [Cierre técnico de Redis](REDIS-CLOSURE.md)
-- [README principal](../README.md)
-- [RC1 publicada](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1)
-- [Registro de digests RC1 (`prd`)](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/blob/prd/releases/ghcr-digests-v0.1.0-rc1.txt)
-- [Cierre de README y contribución: PR #18](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/pull/18)
-- [Cierre Redis: PR #19](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/pull/19)
+- [Matriz de cierre](RELEASE-CLOSURE.md)
+- [Redis — cierre técnico](REDIS-CLOSURE.md)
+- [README](../README.md)
+- [Licencia](../LICENSE) y [atribuciones](../NOTICE.md)
+- [RC1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1)
+- PR #18: documentación; PR #19: Redis; PR #20: acta inicial; PR #21: duración de instalación.
