@@ -1,5 +1,5 @@
 ghcr.io/phoenix-automation-platform/pap-operator:dev-20261020
-ghcr.io/phoenix-automation-platform/pap-web-task:dev-20261020
+ghcr.io/phoenix-automation-platform/pap-web-task:recovery-20261021
 ghcr.io/phoenix-automation-platform/pap-postgres:dev-20261020
 ghcr.io/phoenix-automation-platform/pap-redis:dev-20261020
 ghcr.io/phoenix-automation-platform/pap-ee-control:dev-20261020
