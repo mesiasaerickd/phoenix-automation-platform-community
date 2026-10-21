@@ -149,22 +149,6 @@ La primera ejecución puede requerir actualizar contenido SCM del proyecto. Los 
 
 PAP utiliza el modelo de escalado de Kubernetes, pero aumentar réplicas o cuotas **no aumenta automáticamente la capacidad física**. Los Jobs requieren CPU, RAM, almacenamiento y capacidad del clúster, además de políticas adecuadas. Las cuotas, requests, limits y condiciones de RollingUpdate se detallan en [dimensionamiento](docs/CAPACITY-PREREQUISITES.md). Las pruebas RC2 verificaron la funcionalidad; los perfiles de recursos ayudan al administrador a dimensionar su instalación.
 
-## ✅ Evidencia funcional — RC2 (laboratorio)
-
-| Prueba | Resultado observado |
-|---|---|
-| Instalación online en VM limpia, K3s y Operator | Realizada |
-| PostgreSQL y migración AWX 24.6.1 | `Complete 1/1` |
-| API `/api/v2/ping/` | HTTP **200** |
-| Contenedores Task/Web | Task **4/4**, Web **3/3** |
-| Control Plane | UID **1001**, Receptor 1.6.9 y socket verificados |
-| EE predefinido y EE externo | Registrados y disponibles para pruebas |
-| Jobs con EE personalizados | **Dos Jobs terminados exitosamente**, reportados por el operador del laboratorio |
-| EE externo | Construido con Podman/Ansible Builder; importado en K3s/containerd; probado con `sshpass` y colecciones POSIX/General |
-| Acceso web | HTTPS interno utilizado; se reportó desaparición del error de UI/CSRF tras el cambio de dirección |
-
-Los hallazgos del entorno de laboratorio y las recomendaciones de configuración se encuentran en la documentación técnica de referencia para el administrador.
-
 ## 🧭 Responsabilidades y requisitos de infraestructura
 
 **PAP entrega el software, sus componentes y documentación de referencia.** La preparación, configuración y operación de la infraestructura corresponden al equipo responsable de cada instalación. Las guías incluyen requisitos y hallazgos útiles para facilitar su implementación.
