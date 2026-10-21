@@ -19,6 +19,12 @@ Esta acta consolida el trabajo técnico y documental existente, evitando abrir n
 | Seguridad y terceros | Políticas LICENSE/NOTICE/SECURITY publicadas; conservar evaluación de vulnerabilidades y obligaciones por paquete como parte del control general de cada release |
 | Candidato de imágenes posterior | **PENDIENTE CONFIRMACIÓN EXTERNA** desde el flujo de construcción y validación que está ejecutándose en paralelo |
 
+## Tiempo observado de instalación
+
+**Última instalación completa de laboratorio: 20 minutos en total**, desde el inicio hasta la finalización del proceso, según la medición reportada por el responsable de la prueba.
+
+Este dato es una **medición histórica de una ejecución**, no un SLA, promedio estadístico ni garantía de duración. Puede variar por CPU, RAM, almacenamiento, conectividad, descarga de imágenes, desempeño de Kubernetes y migraciones. No extrapolar este tiempo a una instalación nueva sin medición.
+
 ## 3. Única entrada para cerrar el paquete de imágenes nuevo
 Registrar, una vez confirmado en el flujo de construcción: etiqueta/versionado del candidato, commit Git, resultado CI, nombres de las seis imágenes, digests OCI publicados, accesibilidad anónima, resultado de escaneo y problemas bloqueantes (si los hay). Si se decide reutilizar digests RC1, registrar explícitamente que son los mismos; no asumirlo.
 
