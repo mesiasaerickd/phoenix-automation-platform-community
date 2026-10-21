@@ -2,7 +2,7 @@
 
 This folder records the observed PAP Redis `dev-20261020` build layout. The original build recipe was not recovered. `Containerfile.candidate` is a **new reconstruction**, not an attestation of the original.
 
-The published container runs Alpine 3.24.2, has 20 APK packages, and includes `redis-server`, `redis-cli`, and the project-owned 156-byte `pap-entrypoint.sh`. The latter was transcribed exactly from the published image. Redis binaries are copied from the official Redis 8.10.2 Alpine container, whose `redis-server` file SHA256 matches the PAP file (`df1291685ab15c4708c5556298146a93f498387aa6265aa0988da88d9952e41d`). The `redis-cli` origin still requires an independent hash comparison.
+The published container runs Alpine 3.24.2, has 20 APK packages, and includes `redis-server`, `redis-cli`, and the project-owned 156-byte `pap-entrypoint.sh`. The latter was transcribed exactly from the published image. Redis binaries are copied from the official Redis 8.10.2 Alpine container, whose `redis-server` file SHA256 matches the PAP file (`df1291685ab15c4708c5556298146a93f498387aa6265aa0988da88d9952e41d`). The `redis-cli` file SHA256 was also independently matched against the official Redis 8.10.2 Alpine image (`b3b11461c9b2e376bea58d43afdefa46d1336c3b2a0cd6738feb1fbe735add19`). Both executable identities are verified; this does not verify complete image correspondence or license compliance.
 
 ## Redis licensing / third-party notices
 
@@ -12,7 +12,7 @@ Alpine 3.24.2 is a distinct distribution with 20 installed APK packages. The RC1
 
 ### Must be completed BEFORE publishing a new Redis image
 
-1. Verify `redis-cli` file identity against the official image, and pin both base images to verified immutable digests.
+1. **Completed:** verify both Redis executable files against the official image (SHA256 match, see below). **Pending:** pin both base images to verified immutable digests and identify every build input.
 2. Package applicable original license texts, copyright notices, source links and complete corresponding source/build instructions for **all** third-party components, including packages outside the GPL/LGPL subset. The absence of license files in the current container must be corrected. Confirm required notices are present in the shipped artifact and accessible with the distribution.
 3. Verify upstream image stage content, Alpine package versions, script SHA256, runtime behavior, and package source correspondence. `apk upgrade` is not a reproducible lock: record exact package repository snapshot/pinning or equivalent controlled build inputs.
 4. Determine the original `COPY multi:...` scope: the new recipe intentionally copies two known executables rather than claiming perfect original filesystem reproduction.
@@ -37,3 +37,7 @@ Se compararon con SHA256 **ambos** ejecutables presentes en la imagen PAP contra
 - Falta ejecutar prueba de compilación y ejecución aislada, no en el clúster actual.
 
 No presentar el RC1 como certificado ni el PR candidato como completo hasta satisfacer estos controles.
+
+## Criterios de salida antes de fusionar el candidato
+
+El paso de compilación aislada debe producir evidencia de: digest de la imagen construida, inventario de APK instalado, resultados de arranque de `redis-server`, compatibilidad con el entrypoint, comparación de SHA256 de los dos ejecutables, y revisión de licencias/avisos incluidos. El inventario binario y los archivos publicados en el Release son **insumos de auditoría**, no una certificación de correspondencia completa con las fuentes. No usar este Containerfile para reemplazar la imagen vigente sin cumplir estos criterios y actualizar la versión del Release.
