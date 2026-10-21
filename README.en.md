@@ -67,6 +67,8 @@ Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the proje
 
 RC2 laboratory checks do not constitute external RC1 release validation.
 
+[General release closure record](docs/GENERAL-CLOSURE.md) (Spanish): consolidated project status and the explicit gates for the next image candidate.
+
 ## ⚖️ Origin and licensing
 
 PAP acknowledges [AWX](https://github.com/ansible/awx) as an upstream reference under the **Apache License 2.0**. PAP is an independent initiative and not an official or endorsed upstream distribution. See [NOTICE.md](NOTICE.md) and [LICENSE](LICENSE).
