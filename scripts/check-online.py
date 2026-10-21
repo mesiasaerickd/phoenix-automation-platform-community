@@ -13,14 +13,16 @@ p = Path(sys.argv[1])
 awx = json.loads((p / "awx.yaml").read_text())
 docs = list(yaml.safe_load_all((p / "operator.yaml").read_text()))
 spec = awx["spec"]
-assert spec.get("image_pull_secrets") == ["pap-ghcr"], "Falta image_pull_secrets para GHCR"
+assert not spec.get("image_pull_secrets"), "Las imagenes publicas no requieren image_pull_secrets"
+assert spec.get("image") == "ghcr.io/phoenix-automation-platform/pap-web-task"
+assert spec.get("image_version") == "dev-20261020"
 assert not spec.get("ee_pull_credentials_secret"), "No usar un dockerconfigjson como credencial AWX EE"
 assert spec.get("image_pull_policy") == "IfNotPresent"
 assert len(spec.get("ee_images", [])) >= 1
 operator = next(d for d in docs if d and d.get("kind") == "Deployment"
                 and d["metadata"]["name"] == "awx-operator-controller-manager")
 pod = operator["spec"]["template"]["spec"]
-assert pod.get("imagePullSecrets") == [{"name": "pap-ghcr"}]
+assert not pod.get("imagePullSecrets"), "El operador publico no requiere imagePullSecrets"
 manager = next(c for c in pod["containers"] if c["name"] == "awx-manager")
 assert manager["args"][0] == "run"
 env = {e["name"]: e for e in manager["env"]}
