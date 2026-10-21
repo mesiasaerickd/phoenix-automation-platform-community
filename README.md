@@ -62,11 +62,11 @@ La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo
 
 1. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y revisa las incidencias existentes.
 2. Propón una mejora mediante **Issue**, o crea un **Fork** para preparar código.
-3. Trabaja en una rama de tu propio Fork y abre un **Pull Request** hacia la rama de integración `dev` (rama disponible; protecciones pendientes).
+3. Trabaja en una rama de tu propio Fork y abre un **Pull Request** hacia `contrib`. Tras la revisión, los mantenedores promueven cambios de `contrib` a `dev` y posteriormente a `prd` mediante validaciones.
 4. Describe los cambios, las pruebas y los posibles impactos.
 5. El mantenimiento revisará y aceptará cada aporte antes de incluirlo.
 
-La rama estable `prd` queda reservada para promociones revisadas; `contrib` alberga documentación y reglas. **Ramas comunitarias creadas:** `contrib`, `dev` y `prd`. La configuración de protecciones y la publicación instalable siguen pendientes.
+La rama estable `prd` queda reservada para promociones revisadas; `contrib` alberga documentación y reglas. **Ramas comunitarias creadas:** `contrib`, `dev` y `prd`. La rama predeterminada es `contrib`. Consulta [la política de ramas](docs/COMMUNITY-SETUP.md) y confirma en GitHub la aplicación efectiva de las protecciones antes de cualquier promoción. La homologación externa de la publicación instalable sigue pendiente.
 
 ## 📚 Documentación de la comunidad
 
@@ -80,6 +80,13 @@ La rama estable `prd` queda reservada para promociones revisadas; `contrib` albe
 | [NOTICE.md](NOTICE.md) | Procedencia y atribuciones |
 | [LICENSE](LICENSE) | Condiciones de licencia |
 | [docs/COMMUNITY-SETUP.md](docs/COMMUNITY-SETUP.md) | Preparación y protecciones previstas de `dev` y `prd` |
+
+## Cierre técnico y de publicación
+
+- [Redis: procedencia, seguridad y aceptación funcional](docs/REDIS-CLOSURE.md)
+- [Matriz de cierre y evidencia de publicación](docs/RELEASE-CLOSURE.md)
+
+Los resultados funcionales RC2 corresponden a laboratorio; no homologan automáticamente la versión pública RC1. La documentación y el software tienen criterios de cierre independientes.
 
 ## ⚖️ Origen y licencias
 
