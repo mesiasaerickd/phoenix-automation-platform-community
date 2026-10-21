@@ -88,6 +88,8 @@ La rama estable `prd` queda reservada para promociones revisadas; `contrib` albe
 
 Los resultados funcionales RC2 corresponden a laboratorio; no homologan automáticamente la versión pública RC1. La documentación y el software tienen criterios de cierre independientes.
 
+[Acta de cierre general de Phoenix](docs/GENERAL-CLOSURE.md): estado consolidado y comprobaciones específicas pendientes de confirmación.
+
 ## ⚖️ Origen y licencias
 
 PAP reconoce a [AWX](https://github.com/ansible/awx) como proyecto de referencia, publicado con licencia **Apache 2.0**. PAP es independiente y no debe confundirse con una distribución avalada oficialmente por los titulares de marcas de terceros. Consulta [NOTICE.md](NOTICE.md) y [LICENSE](LICENSE) para más información.
