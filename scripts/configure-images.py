@@ -48,7 +48,7 @@ if mode == "online":
     spec["control_plane_ee_image"] = refs[4]
     spec["ee_images"] = [{"name": "PAP EE Core", "image": refs[5]}]
     spec["image_pull_policy"] = "IfNotPresent"
-    spec["image_pull_secrets"] = ["pap-ghcr"]
+    spec.pop("image_pull_secrets", None)
     # Dockerconfigjson (Kubernetes imagePullSecret) is NOT a valid AWX
     # ee_pull_credentials_secret (expects username/password/url keys).
     spec.pop("ee_pull_credentials_secret", None)
@@ -58,7 +58,7 @@ if mode == "online":
 for obj in operator:
     if obj and obj.get("kind") == "Deployment" and obj["metadata"]["name"] == "awx-operator-controller-manager":
         pod = obj["spec"]["template"]["spec"]
-        pod["imagePullSecrets"] = [{"name": "pap-ghcr"}]
+        pod.pop("imagePullSecrets", None)
         for container in pod["containers"]:
             if container["name"] == "awx-manager":
                 if operator_image:

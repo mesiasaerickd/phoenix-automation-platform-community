@@ -70,50 +70,14 @@ echo "===== MANIFIESTOS GENERADOS ====="
 
 ls -lh "$OUT"
 
-# Online private images: verify the PAT before creating Kubernetes resources.
-echo "===== VALIDAR TOKEN GHCR (ANTES DE INSTALAR) ====="
-    set +x
-    if [[ ! -r /dev/tty ]]; then
-        echo "BLOCKED: GHCR_TOKEN_REQUIRES_TTY"
-        exit 1
-    fi
-    echo "Instalacion privada: introduce el PAT classic con read:packages."
-    read -r -s -p "PAP_INSTALL_READONLY (pegar token y Enter): " TOKEN </dev/tty
-    echo
-    if [[ -z "$TOKEN" ]]; then echo "BLOCKED: TOKEN_EMPTY"; exit 1; fi
-    export TOKEN
-    trap 'unset TOKEN' EXIT
-    if ! python3 - <<'PYGHCR'
-import json, os, urllib.error, urllib.request
-token = os.environ["TOKEN"]
-req = urllib.request.Request("https://api.github.com/user",
-    headers={"Authorization":"Bearer "+token,
-             "Accept":"application/vnd.github+json",
-             "X-GitHub-Api-Version":"2022-11-28"})
-try:
-    with urllib.request.urlopen(req, timeout=20) as res:
-        user = json.load(res).get("login")
-        scopes = {s.strip() for s in res.headers.get("X-OAuth-Scopes","").split(",")}
-        if user != "mesiasaerickd" or "read:packages" not in scopes:
-            print("BLOCKED: GHCR_TOKEN_OWNER_OR_SCOPE_INVALID")
-            raise SystemExit(1)
-except (urllib.error.URLError, TimeoutError) as exc:
-    print("BLOCKED: GHCR_TOKEN_VALIDATION_FAILED:", type(exc).__name__)
-    raise SystemExit(1)
-print("GHCR_PAT_VALID=PASS")
-PYGHCR
-    then
-        unset TOKEN
-        exit 1
-    fi
+echo "===== REGISTRO GHCR PUBLICO ====="
+echo "No se requieren credenciales personales."
 
 echo "===== PREPARAR NAMESPACE ====="
 
 "${K[@]}" create namespace "$NAMESPACE"
 
-echo "===== CONFIGURAR GHCR ====="
-"$ROOT/scripts/configure-ghcr.sh" "$NAMESPACE"
-unset TOKEN
+echo "===== IMAGENES PUBLICAS GHCR ====="
 
 echo "===== INSTALAR CRD Y OPERADOR ====="
 
