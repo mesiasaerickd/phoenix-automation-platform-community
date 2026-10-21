@@ -1,0 +1,8 @@
+# PAP v0.1.0-rc1 - GHCR public manifest digests
+# Verified via anonymous GHCR manifest access
+ghcr.io/phoenix-automation-platform/pap-operator@sha256:06152b0716d9f655b726e405bc9ef9cefabfcb4fa6332c5332dacf29dc5e3555
+ghcr.io/phoenix-automation-platform/pap-web-task@sha256:f38924fab589979ed5ab87984ee8e518d0d520fc3cdb39b3eb737b2737b05695
+ghcr.io/phoenix-automation-platform/pap-postgres@sha256:87a0af96022559fbe8c6f26619e62494e929f0a3ac0055448296f0d85fdd8f8f
+ghcr.io/phoenix-automation-platform/pap-redis@sha256:000ff14e526f1d693d7206f6df83dfd5beebbef1ee5e31bc723ea0fe3d9b6e5c
+ghcr.io/phoenix-automation-platform/pap-ee-control@sha256:f17aa98fd58f8ac722906c8fa3af4825ce040348b3dd9b1d9d24dcfcfc94f194
+ghcr.io/phoenix-automation-platform/pap-ee-core@sha256:de883fb40bd04557b19d3fff596176ac246eb88e5e15aee2662a5d28be8f30d9

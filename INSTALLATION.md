@@ -1,3 +1,5 @@
+> **Actualización RC1:** Las seis imágenes de Phoenix están disponibles públicamente en GHCR. El instalador actual no solicita PAT ni crea `pap-ghcr`. Consulta [la guía RC1](docs/RELEASE-v0.1.0-rc1.md). Las instrucciones privadas restantes son históricas.
+
 # PAP online — instalación y criterios de aceptación (dev)
 
 > **Alcance actual: únicamente online.** No se realizan cambios, compilaciones ni pruebas del modo offline. Los cambios no se promueven a `prd` ni se aplican automáticamente a nodos de prueba.
@@ -14,7 +16,7 @@ El POD_CIDR debe obtenerse del clúster real, no copiar el valor `CIDR de pods d
 
 Si firewalld está activo, deben probarse rutas y NetworkPolicies; las políticas de forwarding deben ser limitadas, aprobadas y reversibles. Si está inactivo o no instalado, el instalador no debe activarlo ni instalarlo. Mantener SELinux Enforcing.
 
-**Autenticación de imágenes**: `pap-ghcr` de tipo `kubernetes.io/dockerconfigjson` se usa únicamente como `image_pull_secrets`. `ee_pull_credentials_secret` exige otro formato (`username`, `password`, `url`, `ssl_verify` opcional) y NO puede apuntar a `pap-ghcr`. Para ejecutar Jobs con EE privados configurar credenciales de registro compatibles dentro de PAP por separado.
+**Nota histórica (distribución privada anterior):** `pap-ghcr` de tipo `kubernetes.io/dockerconfigjson` se usa únicamente como `image_pull_secrets`. `ee_pull_credentials_secret` exige otro formato (`username`, `password`, `url`, `ssl_verify` opcional) y NO puede apuntar a `pap-ghcr`. Para ejecutar Jobs con EE privados configurar credenciales de registro compatibles dentro de PAP por separado.
 
 ## Corrección Control Plane UID 1001
 
