@@ -36,6 +36,18 @@ k3s kubectl -n pap-acceptance port-forward svc/pap-security-service 18080:80 --a
 
 Desde un navegador en el mismo nodo: `http://127.0.0.1:18080`. Si el navegador está en otra máquina, mantener `port-forward` activo en el nodo y establecer desde el cliente un túnel SSH `ssh -L 18080:127.0.0.1:18080 usuario@servidor`. Abrir entonces `http://127.0.0.1:18080` en el equipo cliente. No cambiar `--address` a `0.0.0.0` por conveniencia. El túnel es temporal; para producción usar un reverse proxy/Ingress con HTTPS, autenticación y controles de acceso aprobados. Si NGINX del host ya usa 80/443 no modificarlo sin planificación.
 
+## Prueba por IP y puerto, sin NGINX ni certificados
+
+El usuario puede decidir posteriormente cómo publicar PAP con dominio, reverse proxy o TLS. Para una prueba temporal desde otro equipo en una red aislada y de confianza:
+
+```bash
+k3s kubectl -n pap-acceptance port-forward svc/pap-security-service 18080:80 --address=172.16.205.131
+```
+
+Desde el navegador de ese equipo abrir `http://172.16.205.131:18080`, ingresar con el administrador y validar la interfaz. Sustituir la IP por la IP real del servidor; mantener la terminal abierta. `Ctrl+C` detiene la publicación y evita dejar un servicio expuesto permanentemente. El administrador debe autorizar acceso TCP/18080 **solo desde clientes de prueba permitidos** cuando el firewall lo requiera; el instalador no altera reglas automáticamente. No publicar HTTP sin cifrar en redes no confiables ni transmitir credenciales reales por Internet. Si existe riesgo de interceptación, usar el túnel SSH descrito anteriormente.
+
+Prueba mínima: pods Web 3/3 y Task 4/4, PostgreSQL 1/1, migración Complete, interfaz de login accesible, autenticación y endpoints API HTTP 200. La ejecución de un Job Template real es un control posterior necesario para aceptación funcional.
+
 ## Seguridad y aceptación pendientes
 
 Un `HTTP 200` no valida por sí solo autenticación ni ejecución Ansible. Probar inicio de sesión, API autenticada, Job Template real y comprobación `bash scripts/preflight.sh pap-acceptance post`; registrar resultados. Para la instalación medida, `cni0` se asignó **temporalmente** a zona `trusted` como diagnóstico de bloqueo de Metrics Server. No considerarlo configuración permanente ni solución endurecida; consultar `docs/K3S-METRICS-FIREWALLD-TROUBLESHOOTING.md` cuando se fusione. Disco provisionado de 47 GiB, inferior a los 60 GiB recomendados para laboratorio: capacidad pendiente de aceptación.
