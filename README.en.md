@@ -14,7 +14,7 @@
 
 </div>
 
-> **Community project in preparation.** This repository contains community guidelines, documentation and proposals. Installable distribution sources will be added only after the relevant licensing, attribution, dependency and publication reviews.
+> **Community project in preparation.** This repository contains community guidelines, documentation and proposals. A public [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) candidate provides six public OCI images and an online installation path in the distribution branches. External end-to-end installation and redistribution compliance remain pending; it is not production-approved.
 
 ## ✨ About
 
@@ -41,7 +41,7 @@ flowchart TB
 
 ## ✅ Current status
 
-The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; it is not yet an installable software distribution.
+The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; RC1 contains an installation candidate but has not passed external end-to-end release certification.
 
 ## 🤝 How to contribute
 
