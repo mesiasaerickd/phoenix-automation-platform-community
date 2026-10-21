@@ -1,6 +1,6 @@
 # Matriz de cierre y publicación — PAP
 
-Actualizado: 2026-10-20. Este documento distingue **documentación terminada** de **release homologado**.
+Actualizado: 2026-10-20. Consultar también [acta de cierre general](GENERAL-CLOSURE.md). Este documento distingue **documentación terminada** de **release homologado**.
 
 ## Etapas
 1. `contrib`: entrada de aportes, política comunitaria y documentación; revisión de mantenedor.
@@ -25,7 +25,7 @@ Actualizado: 2026-10-20. Este documento distingue **documentación terminada** d
 ## Publicación responsable
 No describir el producto como *Production Ready*, ni un escaneo como libre de vulnerabilidades, sin pruebas de la imagen exacta y del sistema desplegado. Los resultados de laboratorio RC2 no equivalen a homologación de la etiqueta pública `v0.1.0-rc1`.
 
-La documentación de esta rama puede cerrarse en revisión. **La aceptación técnica y el release general quedan condicionados a las evidencias de la matriz.**
+La documentación comunitaria y el cierre técnico de Redis están integrados mediante PR #18 y PR #19. El acta general queda documentada; la compilación final del nuevo candidato espera confirmación independiente. **La aceptación técnica y el release general quedan condicionados a las evidencias de la matriz.**
 
 ## Registro de evidencias para cada control
 Fecha UTC, ambiente, commit, versión, digest OCI, comandos de validación, resultado esperado/real, logs depurados, riesgos y responsable. Nunca registrar claves ni direcciones internas sensibles.
