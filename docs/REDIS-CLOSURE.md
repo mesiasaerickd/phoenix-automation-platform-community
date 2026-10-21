@@ -1,6 +1,6 @@
 # Redis — cierre técnico y criterios de aceptación (PAP)
 
-Estado: **documentación preparada; aceptación funcional final pendiente de evidencia verificable**. Fecha de revisión: 2026-10-20.
+Estado: **identidad de Redis 8.10.2 verificada en ambos binarios (2/2); conformidad global de imagen y release pendientes**. Fecha de revisión: 2026-10-20.
 
 ## Alcance
 Redis es un servicio auxiliar utilizado por los componentes de ejecución de PAP/AWX. Su disponibilidad no sustituye la de PostgreSQL, Receptor ni los Execution Environments. La relación exacta Redis/Task y sus opciones de persistencia deben verificarse contra los manifiestos y la configuración de la versión desplegada. No activar persistencia, exposición de puertos ni cambios de seguridad sin comprobar su necesidad y su compatibilidad.
@@ -29,7 +29,14 @@ Verificar mediante el cliente configurado que Redis responde `PONG` **sin public
 - Evidencias reproducibles adjuntas a release o PR: versiones, hashes, logs depurados, identificación del Job, salida, fecha, responsable y estado.
 
 ## Estado conocido vs pendiente
-Se han comunicado pruebas previas de respuesta `PONG` y análisis Trivy sin hallazgos para un candidato de Redis; **no se han validado aquí sus artefactos, digests ni logs**. La etiqueta `pap-redis:dev-20261020` requiere comprobación independiente. El cierre funcional end-to-end y la auditoría de procedencia no deben marcarse PASS sin adjuntar evidencia.
+**Evidencia histórica conservada en la rama `fix/redis-source-and-notices`:** Redis 8.10.2 comparado contra `docker.io/library/redis:8.10.2-alpine`:
+- `redis-server`: SHA256 `df1291685ab15c4708c5556298146a93f498387aa6265aa0988da88d9952e41d` — PASS.
+- `redis-cli`: SHA256 `b3b11461c9b2e376bea58d43afdefa46d1336c3b2a0cd6738feb1fbe735add19` — PASS.
+- Digest público RC1 registrado en `prd`: `sha256:000ff14e526f1d693d7206f6df83dfd5beebbef1ee5e31bc723ea0fe3d9b6e5c`.
+- Fuentes y materiales de Redis y GPL/LGPL Alpine figuran en activos RC1 según el registro de auditoría. El Containerfile disponible es una **reconstrucción**, no la receta original probada.
+- `PONG` y Trivy sin hallazgos: resultados previos comunicados sin informes completos adjuntos a este cambio.
+
+**Cierre parcial:** identidad binaria PASS. La revisión de avisos y licencias de todos los paquetes, entradas de compilación, reconstrucción y aceptación integral del release no está completada.
 
 ## Seguridad
 No exponer Redis públicamente. Aplicar segmentación/red de Kubernetes según arquitectura, acceso mínimo, secretos administrados por el entorno y seguimiento de parches. No incorporar contraseñas ni tokens en repositorios, capturas o logs. Los parámetros de persistencia, autenticación y TLS dependen de la configuración real y deben decidirse tras inspeccionarla.
