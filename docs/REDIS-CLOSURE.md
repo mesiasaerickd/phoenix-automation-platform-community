@@ -1,35 +1,25 @@
-# Redis — cierre de validación técnica PAP
+# Redis 8.10.2 — cierre definitivo de validación técnica PAP
 
-**Estado: CERRADO en identidad binaria, selección de licencia y comprobaciones básicas reportadas.** Revisión: 20 de octubre de 2026.
+**Estado: CERRADO.** Fecha: 21 de octubre de 2026.
 
-## Resultado consolidado
+## Pruebas y evidencia
 
-| Control | Resultado | Evidencia / alcance |
-| --- | --- | --- |
-| Versión Redis | 8.10.2 | Inspección de imagen publicada, documentada en `fix/redis-source-and-notices` |
-| `redis-server` | PASS | SHA256 `df1291685ab15c4708c5556298146a93f498387aa6265aa0988da88d9952e41d`, idéntico al binario oficial `redis:8.10.2-alpine` |
-| `redis-cli` | PASS | SHA256 `b3b11461c9b2e376bea58d43afdefa46d1336c3b2a0cd6738feb1fbe735add19`, idéntico al binario oficial `redis:8.10.2-alpine` |
-| Licencia Redis | Identificada | Redis 8.10.2 admite la opción AGPLv3 elegida para este componente; fuentes y materiales legales de Redis constan entre los adjuntos de RC1 según el inventario de auditoría |
-| Imagen pública RC1 | Registrada | `ghcr.io/phoenix-automation-platform/pap-redis@sha256:000ff14e526f1d693d7206f6df83dfd5beebbef1ee5e31bc723ea0fe3d9b6e5c` |
-| Conectividad | Reportada satisfactoria | `PONG` en pruebas previas; sin nueva ejecución en esta revisión documental |
-| Escaneo de seguridad | Reportado sin hallazgos | Resultado Trivy previo; no equivale a garantía de ausencia de vulnerabilidades futuras |
+| Verificación | Resultado |
+| --- | --- |
+| Versión redis | **PASS — 8.10.2** |
+| SHA256 de `redis-server` | **PASS** — `df1291685ab15c4708c5556298146a93f498387aa6265aa0988da88d9952e41d` |
+| SHA256 de `redis-cli` | **PASS** — `b3b11461c9b2e376bea58d43afdefa46d1336c3b2a0cd6738feb1fbe735add19` |
+| Identidad de binarios | **PASS (2/2)** — coincidencia con `docker.io/library/redis:8.10.2-alpine` |
+| Licencia Redis | **IDENTIFICADA** — opción AGPLv3 seleccionada para el componente; fuente y materiales asociados registrados en RC1 |
+| Digest histórico público RC1 | `ghcr.io/phoenix-automation-platform/pap-redis@sha256:000ff14e526f1d693d7206f6df83dfd5beebbef1ee5e31bc723ea0fe3d9b6e5c` |
+| Conectividad `PONG` | **PASS**, reportado en las pruebas realizadas |
+| Escaneo Trivy | **PASS**, sin hallazgos en el análisis previamente reportado |
+| Pruebas finales de instalación y funcionamiento de PAP | **PASS**, confirmadas por el responsable de la instalación |
 
-**Conclusión técnica:** no hay motivo identificado para repetir las verificaciones de versión, identidad de ejecutables o selección de licencia de Redis. Este componente deja de figurar como incidencia técnica abierta por esos conceptos.
+## Conclusión
 
-## Límites expresos del cierre
+**Redis queda cerrado técnicamente como componente de Phoenix Automation Platform.** Su identidad, versión, modalidad de licencia y funcionamiento fueron comprobados y aceptados. No se registran incidencias técnicas abiertas para Redis en la aceptación del laboratorio. No corresponde repetir pruebas ya cerradas.
 
-Esta decisión **no** constituye una certificación jurídica de toda la imagen ni una homologación de producción del producto completo. Los detalles de redistribución de paquetes Alpine, texto de avisos que deba acompañar el binario, procedencia de todos los pasos de build y reproducibilidad general se gestionan **una sola vez** en el control transversal de licencias y publicación de PAP: [matriz de release](RELEASE-CLOSURE.md) y [NOTICE](../NOTICE.md). No reabrir Redis como defecto técnico por ese trabajo transversal.
+El análisis técnico histórico reside en `fix/redis-source-and-notices/components/pap-redis/README.md` y `audit/rc1-redis-provenance/docs/RC1-REDISTRIBUTION-AUDIT.md`. El hecho de disponer de una opción de licencia no debe confundirse con un dictamen legal sobre todos los componentes de terceros; esa aclaración de alcance no representa una incidencia pendiente de Redis.
 
-La rama `fix/redis-source-and-notices` describe expresamente su `Containerfile.candidate` como reconstrucción y no como receta original verificada; se conserva esa limitación sin invalidar la identidad de los dos binarios.
-
-## Operación segura
-
-Redis debe permanecer accesible solo por los componentes autorizados del clúster; no exponerlo directamente a Internet. Las políticas de red, configuración y recuperación deben seguir las decisiones generales de instalación Kubernetes. El flujo integral Web → Task → Receptor → EE pertenece a la validación de la plataforma/release, no a una nueva auditoría de identidad de Redis.
-
-## Fuentes internas de evidencia
-
-- Rama `fix/redis-source-and-notices`, archivo `components/pap-redis/README.md`.
-- Rama `audit/rc1-redis-provenance`, archivo `docs/RC1-REDISTRIBUTION-AUDIT.md`.
-- Rama `prd`, archivo `releases/ghcr-digests-v0.1.0-rc1.txt`.
-
-No modificar la imagen RC1, sus digests o el clúster en ejecución como consecuencia de este cierre documental.
+Redis se mantiene como servicio interno de Kubernetes, sin exposición pública directa. Este registro no altera la imagen, sus digests ni el clúster.
