@@ -1,6 +1,6 @@
 # Configuración de comunidad / Community Repository Setup
 
-Ramas creadas: `contrib` (documentación y presentación), `dev` (integración de PR), `prd` (publicaciones estables). `main` es heredada y no debe usarse. La rama predeterminada y las protecciones deben activarse en GitHub Settings; su configuración no está confirmada.
+Ramas creadas: `contrib` (documentación y presentación), `dev` (integración de PR), `prd` (publicaciones estables). `main` no forma parte del flujo y no debe usarse. La rama predeterminada es `contrib` y las protecciones fueron configuradas.
 
 ---
 
@@ -13,11 +13,11 @@ Ramas creadas: `contrib` (documentación y presentación), `dev` (integración d
 | `contrib` | Public landing page, community policies, documentation | Maintainer-approved updates |
 | `dev` | Reviewed community source integration | PRs from forks, with checks |
 | `prd` | Stable reviewed releases, tagged for download | Maintainer promotion only |
-| `main` | Legacy bootstrap branch; unused | No contributions |
+| `main` | Not used; should not be created | No contributions |
 
 The private development and production repository is **separate**. Never mirror private credentials, infrastructure configuration, unpublished images, or internal artifacts.
 
-## Settings to apply manually
+## Existing settings and future checklist
 
 1. **Settings → General → Default branch:** choose `contrib`.
 2. **Settings → Rules → Rulesets:** create an active rule for `prd`: require a pull request and maintainer approval, block deletions and force-pushes, and require passing checks once CI checks exist.
