@@ -1,4 +1,4 @@
-> **Independent community project:** Phoenix Automation Platform is a free, open-source AWX-derived community contribution. It is not officially affiliated with, certified by, or endorsed by Red Hat, Ansible, or AWX. Latest public candidate: [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) (external clean installation validation pending).
+> **Independent community project:** Phoenix Automation Platform is a free, open-source AWX-derived community contribution. It is not officially affiliated with, certified by, or endorsed by Red Hat, Ansible, or AWX. Latest public candidate: [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) (laboratory installation and functional tests completed and accepted).
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 </div>
 
-> **Community project in preparation.** This repository contains community guidelines, documentation and proposals. A public [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) candidate provides six public OCI images and an online installation path in the distribution branches. External end-to-end installation and redistribution compliance remain pending; it is not production-approved.
+> **Community project in preparation.** This repository contains community guidelines, documentation and proposals. A public [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) candidate provides six public OCI images and an online installation path in the distribution branches. The latest full laboratory installation and functional tests were completed successfully, as confirmed by the testing owner. This is not a third-party certification or universal production approval.
 
 ## ✨ About
 
@@ -41,11 +41,11 @@ flowchart TB
 
 ## ✅ Current status
 
-The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; RC1 contains an installation candidate but has not passed external end-to-end release certification.
+The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; The latest full installation and functional validation have been accepted in the laboratory; see the final technical closure record.
 
 ## 🤝 How to contribute
 
-Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the `dev` integration branch. The `prd` branch is reserved for reviewed stable releases, while `contrib` contains community documentation. **Community branches exist:** `contrib`, `dev`, and `prd`. The default branch is `contrib`. Check [branch policy](docs/COMMUNITY-SETUP.md) and verify effective repository rules before promotion.
+Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the `contrib` branch; maintainers promote reviewed work to `dev` and then `prd`. The `prd` branch is reserved for reviewed stable releases, while `contrib` contains community documentation. **Community branches exist:** `contrib`, `dev`, and `prd`. The default branch is `contrib`. Check [branch policy](docs/COMMUNITY-SETUP.md) and verify effective repository rules before promotion.
 
 ## 📚 Community documentation
 
@@ -65,9 +65,9 @@ Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the proje
 - [Redis provenance, security and functional acceptance](docs/REDIS-CLOSURE.md) (Spanish)
 - [Release evidence and acceptance matrix](docs/RELEASE-CLOSURE.md) (Spanish)
 
-RC2 laboratory checks do not constitute external RC1 release validation.
+The final laboratory installation and functional tests have been completed and accepted. RC1 digests remain historical references for that published candidate.
 
-[General release closure record](docs/GENERAL-CLOSURE.md) (Spanish): consolidated project status and the explicit gates for the next image candidate.
+[General release closure record](docs/GENERAL-CLOSURE.md) (Spanish): finalized laboratory installation, functional acceptance and project closure.
 
 ## ⚖️ Origin and licensing
 
