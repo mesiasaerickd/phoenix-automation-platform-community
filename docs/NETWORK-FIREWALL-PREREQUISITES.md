@@ -38,18 +38,6 @@ ip route
 
 Complementar con logs del contenedor Web/Task y un test de conectividad desde el **Pod origen** hacia el servicio/IP destino, con el puerto efectivo. Revisar selectores de `NetworkPolicy` y contadores de rechazo antes de atribuir el fallo a firewalld.
 
-## Hallazgos de aceptación RC2 — laboratorio SVLNX01 (2026-10-19)
-
-**Resultado funcional comprobado:** con firewalld detenido, el test TCP desde Control Plane EE hacia PostgreSQL cambió de `No route to host` a conexión exitosa y se recuperaron Task 4/4, Web 3/3 y API HTTP 200. Esta comparación confirma que firewalld impedía el tráfico interno en ese laboratorio; los mecanismos precisos de evaluación por cadena no se validaron mediante nft trace.
-
-**Configuración de laboratorio aplicada:** se creó una zona permanente `k3s-internal`, se asociaron las interfaces `cni0` y `flannel.1` y se configuró `target=ACCEPT`. La zona externa `public` permaneció asociada a `ens160`. Tras reactivar firewalld, se verificaron TCP 5432 Pod → Pod, API HTTP 200 y servicios Task/Web/operador en estado Ready; firewalld quedó `active` y `enabled`.
-
-**Advertencia de seguridad:** `target=ACCEPT` sobre interfaces CNI es una **excepción amplia del laboratorio**, no una aprobación para producción. Los cinco objetos `NetworkPolicy` estaban presentes, pero **no se realizaron pruebas negativas de aislamiento**, ni se certificó mínimo privilegio. Antes de promover la configuración de red a producción, revisar alcance, tráfico permitido, enforcement de NetworkPolicy, firewalld, reglas nftables y rollback. No copiar sin validar topología, CIDR ni interfaces.
-
-**SELinux:** en el laboratorio se observó `Permissive`; todavía **no está validado Enforcing**. No documentar la plataforma como endurecida o aceptada en seguridad de producción hasta completar esa validación.
-
-**Aplicación y Jobs:** migración 24.6.1 Complete 1/1; API HTTP 200; Control Plane EE UID 1001; Receptor con proceso y socket disponibles; el operador reconoció los EE Control Plane y PAP EE Core. El operador del laboratorio reportó dos Jobs exitosos utilizando EE personalizados, incluido uno externo basado en AlmaLinux y construido con Podman. La ejecución de EE locales desde K3s requirió importar imágenes a containerd y seleccionar una política de extracción que no intente descargarlas del registro. Esta comprobación no reemplaza pruebas de instalación multinodo, carga ni seguridad.
-
 ## Criterios de aceptación de red
 
 1. K3s/Kubernetes Ready; CoreDNS y métricas disponibles.
