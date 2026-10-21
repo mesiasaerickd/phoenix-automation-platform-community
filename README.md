@@ -113,7 +113,7 @@ La primera ejecución puede requerir actualizar contenido SCM del proyecto. Los 
 | Operador | Operator compatible con CRD AWX | Gestiona el ciclo de vida de los componentes PAP |
 | SO de imágenes | **AlmaLinux** | Base de imágenes reconstruidas; verificar etiqueta/digest de cada imagen |
 | Núcleo de automatización | AWX **24.6.1**, Ansible Core y Ansible Runner | Se mantienen funcionalidades de plataforma y ejecución |
-| Comunicación de Jobs | **Receptor 1.6.9** en prueba RC2 | Conexión mediante socket y arranque del proceso comprobados |
+| Comunicación de Jobs | **Receptor 1.6.9** en prueba RC1 | Conexión mediante socket y arranque del proceso comprobados |
 | Persistencia | PostgreSQL **15** + PVC | Persistencia y gestión de datos de la aplicación |
 | Cola y servicios auxiliares | Redis, rsyslog | Componentes de Task |
 | Frontend | UI web y API REST, personalizaciones | Branding y evolución de experiencia/multilenguaje; la cobertura lingüística completa requiere pruebas |
@@ -147,7 +147,7 @@ La primera ejecución puede requerir actualizar contenido SCM del proyecto. Los 
 
 ### Escalabilidad: Pods y recursos
 
-PAP utiliza el modelo de escalado de Kubernetes, pero aumentar réplicas o cuotas **no aumenta automáticamente la capacidad física**. Los Jobs requieren CPU, RAM, almacenamiento y capacidad del clúster, además de políticas adecuadas. Las cuotas, requests, limits y condiciones de RollingUpdate se detallan en [dimensionamiento](docs/CAPACITY-PREREQUISITES.md). Las pruebas RC2 verificaron la funcionalidad; los perfiles de recursos ayudan al administrador a dimensionar su instalación.
+PAP utiliza el modelo de escalado de Kubernetes, pero aumentar réplicas o cuotas **no aumenta automáticamente la capacidad física**. Los Jobs requieren CPU, RAM, almacenamiento y capacidad del clúster, además de políticas adecuadas. Las cuotas, requests, limits y condiciones de RollingUpdate se detallan en [dimensionamiento](docs/CAPACITY-PREREQUISITES.md). Las pruebas RC1 verificaron la funcionalidad; los perfiles de recursos ayudan al administrador a dimensionar su instalación.
 
 ## 🧭 Responsabilidades y requisitos de infraestructura
 
@@ -170,7 +170,7 @@ El instalador evita realizar cambios de infraestructura implícitos; Un error de
 | [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) | Entrada rápida a prerrequisitos generales |
 | [`docs/CAPACITY-PREREQUISITES.md`](docs/CAPACITY-PREREQUISITES.md) | Perfil de CPU/RAM/disco, requests, limits, quota y margen de escalado |
 | [`docs/NETWORKING.md`](docs/NETWORKING.md) | Matriz de conectividad por flujo/puerto y diagnóstico de redes |
-| [`docs/NETWORK-FIREWALL-PREREQUISITES.md`](docs/NETWORK-FIREWALL-PREREQUISITES.md) | Hallazgos RC2, responsabilidades, firewalld/CNI y advertencias |
+| [`docs/NETWORK-FIREWALL-PREREQUISITES.md`](docs/NETWORK-FIREWALL-PREREQUISITES.md) | Hallazgos RC1, responsabilidades, firewalld/CNI y advertencias |
 | [`docs/SECURITY.md`](docs/SECURITY.md) | Evidencia histórica del análisis de vulnerabilidades y límites del resultado |
 | [`docs/INSTALL_ONLINE.md`](docs/INSTALL_ONLINE.md) | Entrada documental de instalación online |
 | [`scripts/README.md`](scripts/README.md) | Orientación general sobre scripts |
@@ -196,7 +196,7 @@ El instalador evita realizar cambios de infraestructura implícitos; Un error de
 
 ## 🧪 Cómo empezar
 
-> El **modo online** es el flujo trabajado para la aceptación RC2. La instalación requiere un clúster preparado y acceso a las imágenes OCI autorizadas.
+> El **modo online** es el flujo trabajado para la aceptación RC1. La instalación requiere un clúster preparado y acceso a las imágenes OCI autorizadas.
 
 ```bash
 # Desde una copia autorizada de dev, con kubectl/k3s operativo:
