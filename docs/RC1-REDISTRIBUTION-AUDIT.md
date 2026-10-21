@@ -57,3 +57,10 @@ Comparación ejecutada en SVLNX01 entre `ghcr.io/phoenix-automation-platform/pap
 ### Estado
 
 La comprobación de hashes resuelve la **identidad del ejecutable**, no completa la auditoría de licencias. No atribuir certificación legal o reproducibilidad al RC1 por este resultado.
+
+
+## Actualización: PAP Event Bridge — fuente publicada
+
+El responsable del proyecto confirmó que `pap-event-bridge 0.1.0` fue desarrollado íntegramente para Phoenix y no proviene de AWX ni de otro componente externo. Se publicaron los dos archivos Python obtenidos de la imagen `pap-operator:dev-20261020`, junto con un `pyproject.toml` declarando Apache-2.0 y una explicación en `components/pap-event-bridge/README.md`.
+
+**Pendiente técnico:** reconstruir en una versión futura el paquete/imagen con estos metadatos y verificar que la declaración Apache-2.0 aparezca efectivamente en la distribución binaria. Esta documentación no modifica los digests de RC1.
