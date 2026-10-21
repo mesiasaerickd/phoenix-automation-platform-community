@@ -18,7 +18,7 @@
 
 ---
 
-> **Proyecto comunitario en preparación.** Este repositorio reúne las reglas, documentación y propuestas de la comunidad de PAP. El código de distribución se incorporará en una fase posterior, una vez completada su revisión de licencia, dependencias y publicación. No contiene todavía una versión instalable.
+> **Proyecto comunitario en preparación.** Este repositorio reúne las reglas, documentación y propuestas de la comunidad de PAP. La versión candidata pública [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) dispone de seis imágenes OCI públicas y una ruta de instalación online en las ramas de distribución. Su instalación externa integral y auditoría de redistribución permanecen pendientes; no está homologada para producción.
 
 ## ✨ Sobre el proyecto
 
