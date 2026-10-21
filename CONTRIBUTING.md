@@ -30,7 +30,7 @@ Read [SECURITY.md](SECURITY.md) for vulnerability reporting; do not disclose exp
 
 ## Autoría y DCO (Español)
 
-Seguimos un mecanismo equivalente al de contribuciones de AWX: cada commit debe incluir la firma de conformidad con el Developer Certificate of Origin (DCO 1.1). Utiliza `git commit -s -m "descripción"`. La firma DCO confirma el derecho a enviar la contribución, pero no sustituye el análisis de licencias de terceros. Los Pull Requests deben dirigirse a `dev`, sin commits de merge ni secretos.
+Seguimos un mecanismo equivalente al de contribuciones de AWX: cada commit debe incluir la firma de conformidad con el Developer Certificate of Origin (DCO 1.1). Utiliza `git commit -s -m "descripción"`. La firma DCO confirma el derecho a enviar la contribución, pero no sustituye el análisis de licencias de terceros. Los Pull Requests deben dirigirse a `contrib`, sin commits de merge ni secretos. Solo los mantenedores promueven los cambios revisados hacia `dev` y `prd`.
 
 ---
 
