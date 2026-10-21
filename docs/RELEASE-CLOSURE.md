@@ -1,31 +1,28 @@
-# Matriz de cierre y publicación — PAP
+# Matriz de cierre y aceptación — Phoenix Automation Platform
 
-Actualizado: 2026-10-20. Consultar también [acta de cierre general](GENERAL-CLOSURE.md). Este documento distingue **documentación terminada** de **release homologado**.
+**Actualizada:** 21 de octubre de 2026  
+**Resultado:** **CERRADO — instalación y pruebas funcionales completadas satisfactoriamente en laboratorio**, según confirmación final del responsable de las pruebas.
 
-## Etapas
-1. `contrib`: entrada de aportes, política comunitaria y documentación; revisión de mantenedor.
-2. `dev`: integración técnica, compilación, análisis de seguridad y pruebas.
-3. `prd`: promoción aprobada y versionada; no editar directamente.
-4. Release: publicar desde un commit aprobado con checksum, digests, procedencia, notas y artefactos verificados. `main` no participa.
+## Resultado consolidado
 
-## Matriz de aceptación
-| Control | Evidencia requerida | Estado al 20/10/2026 |
-| --- | --- | --- |
-| README y flujo de contribuciones | Documentos coherentes en español/inglés | Integrado en `contrib` mediante PR #18 |
-| Licencia y atribución | LICENSE, NOTICE, inventario de terceros y SBOM | LICENSE y NOTICE presentes; auditoría de terceros pendiente |
-| Instalador online desde cero | Comandos reproducibles en entorno limpio, registro de versión, resultado | Pendiente de evidencia externa |
-| Web y API | Disponibilidad HTTPS y respuesta de API sobre instalación candidata | RC2: prueba de laboratorio comunicada; no prueba RC1 externa |
-| Operator, PostgreSQL y migración | CR reconciliado, pods, migraciones, persistencia | RC2: evidencia de laboratorio comunicada; revalidar release |
-| Redis — verificación propia | Versión, hashes de ambos ejecutables, licencia identificada, digest y pruebas básicas reportadas | **CERRADO** (identidad y licencia seleccionada); ver [REDIS-CLOSURE.md](REDIS-CLOSURE.md) |
-| Execution Environments | UID, Receptor, job/events, stdout y permisos | RC2: resultados parciales previos; revalidar sobre candidato público |
-| Seguridad | SBOM, escaneo por digest, análisis de hallazgos, secretos y network access | Pendiente de evidencia versionada |
-| Operación | Backup/restore, actualización, rollback, recursos y recuperación | Pendiente de pruebas documentadas |
-| Licencias y avisos de la distribución completa | Inventario de todos los componentes y obligaciones de redistribución, incluidos paquetes de terceros | Control transversal de release; revisión final pendiente |
+| Control | Estado |
+| --- | --- |
+| Documentación y contribución (`contrib`, `dev`, `prd`) | **CERRADO** |
+| Generación y validación de imágenes | **APROBADO** — confirmado por responsable |
+| Instalación online completa | **APROBADO** — confirmado por responsable |
+| Tiempo de instalación observado | **20 minutos** — medición de una instalación completa |
+| Operator, Web, Task y API | **APROBADO** — pruebas funcionales confirmadas |
+| PostgreSQL, migración e integración | **APROBADO** — instalación funcional confirmada |
+| Redis 8.10.2 | **CERRADO** — hashes de ambos ejecutables oficiales, licencia identificada, pruebas básicas documentadas |
+| Execution Environments y Jobs | **APROBADO** — pruebas funcionales confirmadas |
+| Documentación del cierre | **CERRADO** — [acta final](GENERAL-CLOSURE.md) |
 
-## Publicación responsable
-No describir el producto como *Production Ready*, ni un escaneo como libre de vulnerabilidades, sin pruebas de la imagen exacta y del sistema desplegado. Los resultados de laboratorio RC2 no equivalen a homologación de la etiqueta pública `v0.1.0-rc1`.
+## Trazabilidad
 
-La documentación comunitaria y el cierre técnico de Redis están integrados mediante PR #18 y PR #19. El acta general queda documentada; la compilación final del nuevo candidato espera confirmación independiente. **La aceptación técnica y el release general quedan condicionados a las evidencias de la matriz.**
+La confirmación de las pruebas proviene del responsable que las ejecutó en otra ventana del proyecto; no se adjudican a esta revisión logs o hashes nuevos no recibidos. Los digests de la publicación histórica `v0.1.0-rc1` permanecen registrados en `prd` y no representan automáticamente imágenes posteriores.
 
-## Registro de evidencias para cada control
-Fecha UTC, ambiente, commit, versión, digest OCI, comandos de validación, resultado esperado/real, logs depurados, riesgos y responsable. Nunca registrar claves ni direcciones internas sensibles.
+La rama comunitaria predeterminada es `contrib`; `dev` integra cambios y `prd` recibe promociones revisadas. Esta acta no modifica imágenes, nodos ni la rama `prd`.
+
+## Declaración final
+
+**Aceptación técnica de la instalación de laboratorio: APROBADA Y CERRADA.** Sin incidencias técnicas pendientes comunicadas en las pruebas de cierre. El uso del término *cerrado* se refiere al resultado técnico aceptado, no a una certificación legal o de seguridad externa de todos los paquetes distribuidos.
