@@ -1,3 +1,5 @@
+> **Independent community project:** Phoenix Automation Platform is a free, open-source AWX-derived community contribution. It is not officially affiliated with, certified by, or endorsed by Red Hat, Ansible, or AWX. Latest public candidate: [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) (external clean installation validation pending).
+
 <div align="center">
 
 <img src="docs/images/pap-banner.svg" alt="PAP — Phoenix Automation Platform" width="100%" />

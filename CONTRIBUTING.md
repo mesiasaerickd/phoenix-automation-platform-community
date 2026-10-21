@@ -1,6 +1,6 @@
 # Guía de contribución / Contributing Guide
 
-PAP acepta propuestas mediante Issues y Pull Requests. Utiliza un Fork, crea una rama de trabajo y solicita revisión hacia `dev`. La rama `prd` publica únicamente versiones aprobadas. `contrib` presenta el proyecto y sus reglas. No incluyas secretos, datos empresariales ni material sin licencia compatible.
+PAP acepta propuestas mediante Issues y Pull Requests. Utiliza un Fork, crea una rama de trabajo y solicita revisión hacia `contrib`. La rama `prd` publica únicamente versiones aprobadas. `contrib` presenta el proyecto y sus reglas. No incluyas secretos, datos empresariales ni material sin licencia compatible.
 
 ---
 
@@ -13,9 +13,9 @@ Thank you for contributing to Phoenix Automation Platform (PAP).
 1. Check existing Issues before opening a new one.
 2. Open an Issue for significant changes and describe the intended behavior.
 3. Fork this repository and create a focused branch (for example, `fix/description` or `docs/topic`).
-4. Submit a Pull Request **targeting `dev`**. Do not target `prd`, `contrib`, or `main`.
+4. Submit a Pull Request **targeting `contrib`**. Do not target `dev`, `prd`, or `main` directly.
 5. Explain the change, motivation, compatibility, risks, tests, and documentation updates.
-6. Wait for maintainer review and required CI checks. Maintainers alone promote reviewed changes to `prd`.
+6. Wait for maintainer review and required CI checks. Maintainers promote approved changes from `contrib` to `dev`, and validated changes from `dev` to `prd`.
 
 ## Rules
 
@@ -36,6 +36,6 @@ Seguimos un mecanismo equivalente al de contribuciones de AWX: cada commit debe 
 
 ## Developer Certificate of Origin (English)
 
-PAP follows the upstream AWX contribution model: contributors must sign off each commit under Developer Certificate of Origin (DCO) 1.1. Use `git commit -s -m "description"` and submit a Pull Request to `dev`. A DCO sign-off asserts the right to submit the work, but does not replace third-party license and provenance checks. Keep PR history clean and free of secrets and merge commits.
+PAP follows the upstream AWX contribution model: contributors must sign off each commit under Developer Certificate of Origin (DCO) 1.1. Use `git commit -s -m "description"` and submit a Pull Request to `contrib`. A DCO sign-off asserts the right to submit the work, but does not replace third-party license and provenance checks. Keep PR history clean and free of secrets and merge commits.
 
 See https://developercertificate.org/ for the DCO text.
