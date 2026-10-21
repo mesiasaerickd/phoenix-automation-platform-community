@@ -56,7 +56,7 @@ flowchart TB
 
 ## ✅ Estado del proyecto
 
-La versión candidata RC2 superó pruebas funcionales de laboratorio, incluyendo migración, interfaz/API y Jobs ejecutados desde dos Execution Environments personalizados. La instalación integral más reciente y sus pruebas funcionales se completaron satisfactoriamente. 
+La versión candidata RC1 superó pruebas funcionales de laboratorio, incluyendo migración, interfaz/API y Jobs ejecutados desde dos Execution Environments personalizados. La instalación integral más reciente y sus pruebas funcionales se completaron satisfactoriamente. 
 
 ## 🤝 Cómo contribuir
 
