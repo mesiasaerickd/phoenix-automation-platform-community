@@ -271,6 +271,13 @@ flowchart LR
 
 `dev` holds ongoing development and testing; `prd` receives the validated software through the controlled release process. External EEs remain independently managed artifacts.
 
+## 👤 Project leadership and technical contact
+
+**Erick Mesías** — **Founder & Technical Maintainer** of Phoenix Automation Platform (PAP).  
+GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Maintainers and contact](MAINTAINERS.md).
+
+This attribution covers the independent PAP initiative and its maintenance, not exclusive authorship of the AWX, Ansible, or third-party upstream code. All upstream credits and licenses are preserved.
+
 ## 🤝 Community and contributions
 
 Community proposals, issues, contribution policies and documentation are being prepared in [**Phoenix Automation Platform Community**](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community). Distribution sources will undergo a separate publication and licensing review.

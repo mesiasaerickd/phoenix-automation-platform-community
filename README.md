@@ -266,6 +266,13 @@ flowchart LR
 - `prd`: versión de código aceptada y promovida exclusivamente mediante PR.
 - Las imágenes EE externas del laboratorio demuestran extensibilidad; se distribuyen de forma independiente con el software.
 
+## 👤 Liderazgo y contacto técnico
+
+**Erick Mesías** — **Fundador y responsable técnico (Founder & Technical Maintainer)** de Phoenix Automation Platform (PAP).  
+GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Responsables y contacto](MAINTAINERS.md).
+
+El reconocimiento corresponde al desarrollo y mantenimiento de PAP como iniciativa independiente; se conservan los créditos y licencias de AWX, Ansible y los componentes Open Source originales.
+
 ## 🤝 Comunidad y contribuciones
 
 La documentación y las propuestas comunitarias se gestionan en [**Phoenix Automation Platform Community**](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community). Para instalar, selecciona siempre la rama `prd` o un release validado; `contrib` no es la distribución instalable.
