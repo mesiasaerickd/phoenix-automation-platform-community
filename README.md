@@ -268,8 +268,10 @@ flowchart LR
 
 ## 👤 Liderazgo y contacto técnico
 
-**Erick David Mesias Arana** — **Fundador y responsable técnico (Founder & Technical Maintainer)** de Phoenix Automation Platform (PAP).  
+**Erick David Mesias Arana** — **Fundador y líder técnico (Founder & Technical Lead)** de Phoenix Automation Platform (PAP).  
 GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Responsables y contacto](MAINTAINERS.md).
+
+**Estructura de participación:** Core Maintainers, Development & QA y Community Contributors son áreas abiertas a colaboradores; no implican integrantes ya designados. Consulta los [roles del proyecto](MAINTAINERS.md).
 
 El reconocimiento corresponde al desarrollo y mantenimiento de PAP como iniciativa independiente; se conservan los créditos y licencias de AWX, Ansible y los componentes Open Source originales.
 
