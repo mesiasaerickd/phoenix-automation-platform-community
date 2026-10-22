@@ -43,7 +43,7 @@ flowchart TB
 
 ## ✅ Current status
 
-The RC2 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; The latest full installation and functional validation have been accepted in the laboratory; see the final technical closure record.
+The RC1 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; The latest full installation and functional validation have been accepted in the laboratory; see the final technical closure record.
 
 ## 🤝 How to contribute
 
