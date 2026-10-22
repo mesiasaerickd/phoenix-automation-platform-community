@@ -60,6 +60,13 @@ flowchart TB
 
 La versión candidata RC1 superó pruebas funcionales de laboratorio, incluyendo migración, interfaz/API y Jobs ejecutados desde dos Execution Environments personalizados. La instalación integral más reciente y sus pruebas funcionales se completaron satisfactoriamente. 
 
+## 👤 Liderazgo y contacto técnico
+
+**Erick Mesías** — **Fundador y responsable técnico (Founder & Technical Maintainer)** de Phoenix Automation Platform (PAP).  
+GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Responsables y contacto](MAINTAINERS.md).
+
+Este reconocimiento corresponde a PAP como iniciativa independiente; se mantienen los créditos y las licencias originales de AWX, Ansible y otros componentes Open Source.
+
 ## 🤝 Cómo contribuir
 
 1. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y revisa las incidencias existentes.
