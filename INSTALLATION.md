@@ -1,10 +1,8 @@
-> **GUÍA PARA INSTALACIONES NUEVAS (RC1):** Obtén el código de `prd` (o una etiqueta de release), **nunca de `contrib`**. Clonación explícita: `git clone --branch prd --single-branch https://github.com/phoenix-automation-platform/phoenix-automation-platform-community.git`. El [README de `prd`](README.md#-instalar-phoenix--empieza-aquí) contiene el flujo recomendado. Las referencias a `dev`, registries privados y correcciones de laboratorio de las secciones históricas son antecedentes de desarrollo; no constituyen instrucciones para clonar `contrib` o mezclar versiones.
+> **INSTALACIÓN PÚBLICA RC1:** clona la rama `prd` o utiliza la versión publicada `v0.1.0-rc1`. Las **seis imágenes OCI de Phoenix son públicas** en `ghcr.io/phoenix-automation-platform/` y se verificó acceso sin autenticación. La instalación estándar **no necesita PAT, secretos de GHCR ni imágenes privadas**. Consulta [README](README.md), [FAQ](docs/FAQ.md) y [digests RC1](releases/ghcr-digests-v0.1.0-rc1.txt). Los siguientes apartados conservan observaciones técnicas históricas del desarrollo; no son pasos obligatorios para nuevos usuarios.
 
-> **Actualización RC1:** Las seis imágenes de Phoenix están disponibles públicamente en GHCR. El instalador actual no solicita PAT ni crea `pap-ghcr`. Consulta [la guía RC1](docs/RELEASE-v0.1.0-rc1.md). Las instrucciones privadas restantes son históricas.
+# PAP online — instalación pública RC1 y notas históricas de desarrollo
 
-# PAP online — instalación y criterios de aceptación (dev)
-
-> **Alcance actual: únicamente online.** No se realizan cambios, compilaciones ni pruebas del modo offline. Los cambios no se promueven a `prd` ni se aplican automáticamente a nodos de prueba.
+> **Alcance:** instalación online. Las imágenes RC1 están publicadas; el flujo actual no exige registro privado. Los apartados técnicos heredados de `dev` se conservan únicamente como historial, no como instrucciones vigentes para nuevas instalaciones.
 
 ## Renderizado y preflight de seguridad
 
@@ -18,13 +16,13 @@ El POD_CIDR debe obtenerse del clúster real, no copiar el valor `CIDR de pods d
 
 Si firewalld está activo, deben probarse rutas y NetworkPolicies; las políticas de forwarding deben ser limitadas, aprobadas y reversibles. Si está inactivo o no instalado, el instalador no debe activarlo ni instalarlo. Mantener SELinux Enforcing.
 
-**Nota histórica (distribución privada anterior):** `pap-ghcr` de tipo `kubernetes.io/dockerconfigjson` se usa únicamente como `image_pull_secrets`. `ee_pull_credentials_secret` exige otro formato (`username`, `password`, `url`, `ssl_verify` opcional) y NO puede apuntar a `pap-ghcr`. Para ejecutar Jobs con EE privados configurar credenciales de registro compatibles dentro de PAP por separado.
+**Nota histórica:** algunos entornos anteriores utilizaban credenciales de registro. Ese procedimiento no aplica a las seis imágenes públicas de RC1 y no debe configurarse en instalaciones estándar.
 
 ## Corrección Control Plane UID 1001
 
 La imagen `pap-ee-control` previamente desplegada en NODO de prueba ejecutaba `uid=1001`, pero `getent passwd 1001` devolvía RC=2. El candidato en `images/control-plane-uid-fix/` añade una entrada NSS para UID 1001 y se prueba en GitHub Actions. **El digest corregido todavía no se ha promovido a los manifiestos del instalador**.
 
-El workflow Control Plane necesita leer la imagen base privada desde GHCR. La ejecución 39115540615 falló inicialmente por permisos de publicación de paquete GHCR; tras ajustar el acceso, la repetición terminó en SUCCESS. Se requiere conceder al repositorio acceso al paquete `pap-ee-control` en Package settings > Manage Actions access, o utilizar un secreto `GHCR_READ_TOKEN` con permiso `read:packages` y autorización efectiva sobre el paquete. La configuración del repositorio no puede otorgar por sí sola permisos de otro paquete.
+El historial de integración de Control Plane incluye incidencias anteriores de permisos GHCR; estas no representan un prerrequisito de autenticación para la distribución pública RC1.
 
 ## Criterios de aceptación online
 
