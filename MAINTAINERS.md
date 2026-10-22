@@ -2,7 +2,7 @@
 
 ## Liderazgo del proyecto / Project leadership
 
-**Erick Mesías** — **Founder & Technical Maintainer / Fundador y responsable técnico**  
+**Erick David Mesias Arana** — **Founder & Technical Maintainer / Fundador y responsable técnico**  
 GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd)
 
 El fundador coordina la evolución técnica, la documentación y la revisión de contribuciones propias de **Phoenix Automation Platform (PAP)**. Para consultas y propuestas técnicas, utiliza [Issues](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/issues) o [Pull Requests](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/pulls) en este repositorio; no se publica contacto personal ni corporativo.
