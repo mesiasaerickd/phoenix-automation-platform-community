@@ -1,6 +1,6 @@
 # Configuración de comunidad / Community Repository Setup
 
-Ramas creadas: `contrib` (documentación y presentación), `dev` (integración de PR), `prd` (publicaciones estables). `main` no forma parte del flujo y no debe usarse. La rama predeterminada es `contrib` y las protecciones fueron configuradas.
+Ramas creadas: `contrib` (documentación y presentación), `dev` (integración de PR), `prd` (publicaciones estables). `main` no forma parte del flujo y no debe usarse. La rama predeterminada observada al 21/10/2026 es `contrib`. Se propone cambiarla a `prd` para que la distribución sea la entrada principal, conservando las reglas de protección existentes. Esta modificación se realiza desde Settings del repositorio.
 
 ---
 
@@ -19,7 +19,7 @@ The private development and production repository is **separate**. Never mirror 
 
 ## Existing settings and future checklist
 
-1. **Settings → General → Default branch:** choose `contrib`.
+1. **Settings → General → Default branch:** cambiar de `contrib` a `prd` (no implica deshabilitar la protección de `prd`).
 2. **Settings → Rules → Rulesets:** create an active rule for `prd`: require a pull request and maintainer approval, block deletions and force-pushes, and require passing checks once CI checks exist.
 3. Add an active rule for `dev`: require pull requests, reviews, and passing tests where available; prevent deletion and force-push.
 4. Protect `contrib` from deletion and force-push; require review for changes.
