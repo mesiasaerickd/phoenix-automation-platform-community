@@ -45,6 +45,13 @@ flowchart TB
 
 The RC1 candidate passed functional laboratory checks, including database migration, UI/API availability and two Jobs using customized Execution Environments. This community repository is preparing its contributor workflow; The latest full installation and functional validation have been accepted in the laboratory; see the final technical closure record.
 
+## 👤 Project leadership and technical contact
+
+**Erick Mesías** — **Founder & Technical Maintainer** of Phoenix Automation Platform (PAP).  
+GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Maintainers and contact](MAINTAINERS.md).
+
+This recognizes independent PAP development and maintenance, not exclusive authorship of AWX, Ansible or other upstream components. Their credits and licenses remain in effect.
+
 ## 🤝 How to contribute
 
 Review [CONTRIBUTING.md](CONTRIBUTING.md), check existing Issues, fork the project and open Pull Requests to the `contrib` branch; maintainers promote reviewed work to `dev` and then `prd`. The `prd` branch is reserved for reviewed stable releases, while `contrib` contains community documentation. **Community branches exist:** `contrib`, `dev`, and `prd`. The default branch is `contrib`. Check [branch policy](docs/COMMUNITY-SETUP.md) and verify effective repository rules before promotion.
