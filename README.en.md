@@ -35,7 +35,7 @@ cd phoenix-automation-platform-community
 git branch --show-current    # Must print prd
 ```
 
-For repeatable deployments, see [RC1 release](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) and the [immutable OCI image references](releases/ghcr-digests-v0.1.0-rc1.txt). Do not mix source and images from different releases.
+**Public images:** all six RC1 container images are accessible anonymously in `ghcr.io/phoenix-automation-platform/`; standard installs do not need a personal GHCR token or a private image registry. For repeatable deployments, see [RC1 release](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) and the [immutable OCI image references](releases/ghcr-digests-v0.1.0-rc1.txt). Do not mix source and images from different releases.
 
 ### 2. Check prerequisites
 
@@ -235,11 +235,11 @@ Infrastructure findings and environment-specific recommendations are documented 
 | [`scripts/configure-installation.py`](scripts/configure-installation.py) | Render installation parameters |
 | [`scripts/configure-images.py`](scripts/configure-images.py) | Prepare OCI image references |
 | [`scripts/check-online.py`](scripts/check-online.py) | Validate online manifests |
-| [`scripts/configure-ghcr.sh`](scripts/configure-ghcr.sh) | Assist with authorized GHCR access |
+| [Public RC1 image digests](releases/ghcr-digests-v0.1.0-rc1.txt) | Six public OCI images; no PAT required for a standard install |
 | [`k8s/awx.yaml`](k8s/awx.yaml) | PAP/AWX custom resource and baseline settings |
 | [`k8s/operator.yaml`](k8s/operator.yaml) | Operator deployment manifest |
 | [`k8s/resource-policies.yaml`](k8s/resource-policies.yaml) | Resource quotas and related policies |
-| [`releases/ghcr-digests-dev.txt`](releases/ghcr-digests-dev.txt) | Development candidate images pinned to digests |
+| [`releases/ghcr-digests-v0.1.0-rc1.txt`](releases/ghcr-digests-v0.1.0-rc1.txt) | Six publicly distributed RC1 images pinned by digest |
 | [`releases/required-images.txt`](releases/required-images.txt) | Required component images |
 | [`.github/workflows/`](.github/workflows/) | CI workflows |
 | [`images/`](images/) | Container image definitions and customizations |
@@ -277,6 +277,10 @@ flowchart LR
 GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Maintainers and contact](MAINTAINERS.md).
 
 This attribution covers the independent PAP initiative and its maintenance, not exclusive authorship of the AWX, Ansible, or third-party upstream code. All upstream credits and licenses are preserved.
+
+## 💬 Questions and community support
+
+See [Frequently asked questions](docs/FAQ.md) and [Support](SUPPORT.md). Use [GitHub Discussions](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/discussions) after its initial setup for community questions, tips and help; use [Issues](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/issues/new/choose) for reproducible bugs and enhancement requests. Never include credentials or private infrastructure details. Community support has no guaranteed response time.
 
 ## 🤝 Community and contributions
 
