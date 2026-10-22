@@ -1,3 +1,5 @@
+> **GUÍA PARA INSTALACIONES NUEVAS (RC1):** Obtén el código de `prd` (o una etiqueta de release), **nunca de `contrib`**. Clonación explícita: `git clone --branch prd --single-branch https://github.com/phoenix-automation-platform/phoenix-automation-platform-community.git`. El [README de `prd`](README.md#-instalar-phoenix--empieza-aquí) contiene el flujo recomendado. Las referencias a `dev`, registries privados y correcciones de laboratorio de las secciones históricas son antecedentes de desarrollo; no constituyen instrucciones para clonar `contrib` o mezclar versiones.
+
 > **Actualización RC1:** Las seis imágenes de Phoenix están disponibles públicamente en GHCR. El instalador actual no solicita PAT ni crea `pap-ghcr`. Consulta [la guía RC1](docs/RELEASE-v0.1.0-rc1.md). Las instrucciones privadas restantes son históricas.
 
 # PAP online — instalación y criterios de aceptación (dev)

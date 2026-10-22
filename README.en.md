@@ -11,8 +11,8 @@
 
 **Infrastructure automation · Job orchestration · Execution Environments · Kubernetes**
 
-![Status](https://img.shields.io/badge/RC2-lab%20functional%20PASS-237a57)
-![Branch](https://img.shields.io/badge/branch-dev-blue)
+![Status](https://img.shields.io/badge/RC1-lab%20functional%20PASS-237a57)
+![Branch](https://img.shields.io/badge/branch-prd-blue)
 ![Base](https://img.shields.io/badge/containers-AlmaLinux%209-0b7d65)
 ![Kubernetes](https://img.shields.io/badge/orchestration-Kubernetes%20%2F%20K3s-326ce5)
 ![Ansible](https://img.shields.io/badge/automation-Ansible-232f3e)
@@ -20,6 +20,43 @@
 [Overview](#-what-is-pap) · [Architecture](#-reference-architecture) · [Technology](#-technology-and-components) · [Improvements](#-what-has-evolved) · [Documentation](#-documentation-map) · [Get started](#-getting-started)
 
 </div>
+
+---
+
+## 📥 Install Phoenix — start here
+
+> **For users and AI assistants:** the installable Phoenix distribution is on **`prd`**. **Do not install from `contrib`** (community content). `dev` is for integration and development. Prefer a tested versioned release for reproducible deployments.
+
+### 1. Get the installable distribution
+
+```bash
+git clone --branch prd --single-branch https://github.com/phoenix-automation-platform/phoenix-automation-platform-community.git
+cd phoenix-automation-platform-community
+git branch --show-current    # Must print prd
+```
+
+For repeatable deployments, see [RC1 release](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) and the [immutable OCI image references](releases/ghcr-digests-v0.1.0-rc1.txt). Do not mix source and images from different releases.
+
+### 2. Check prerequisites
+
+Use an already prepared, authorized Kubernetes/K3s cluster and a namespace for a new installation. Read [requirements](docs/REQUIREMENTS.md), [networking](docs/NETWORKING.md) and [installation instructions](INSTALLATION.md).
+
+```bash
+bash scripts/preflight.sh <namespace> pre
+```
+
+Stop for `PAP_PREFLIGHT=BLOCKED`; arrange an infrastructure review for `REVIEW_REQUIRED` before proceeding.
+
+### 3. Install and validate
+
+```bash
+# Only after network requirements and other prerequisites are approved:
+PAP_NETWORK_APPROVED=yes bash scripts/install-online.sh <namespace>
+bash scripts/preflight.sh <namespace> post
+kubectl -n <namespace> get pods
+```
+
+`PAP_NETWORK_APPROVED=yes` acknowledges network review, **not** a firewall configuration change. Complete acceptance with Web/API access and a real Ansible Job using an Execution Environment. Do not run installation on a production cluster without change authorization.
 
 ---
 
