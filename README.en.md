@@ -236,7 +236,7 @@ flowchart LR
 
 ## 👤 Project leadership and technical contact
 
-**Erick Mesías** — **Founder & Technical Maintainer** of Phoenix Automation Platform (PAP).  
+**Erick David Mesias Arana** — **Founder & Technical Maintainer** of Phoenix Automation Platform (PAP).  
 GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Maintainers and contact](MAINTAINERS.md).
 
 This attribution covers the independent PAP initiative and its maintenance, not exclusive authorship of the AWX, Ansible, or third-party upstream code. All upstream credits and licenses are preserved.
