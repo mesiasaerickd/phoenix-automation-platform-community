@@ -1,3 +1,5 @@
+> **¿Quieres instalar PAP?** Utiliza la [rama `prd`](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/tree/prd), que contiene el software y la [guía de instalación](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/blob/prd/README.md). Ejecuta `git clone --branch prd --single-branch https://github.com/phoenix-automation-platform/phoenix-automation-platform-community.git`. **`contrib` no es una rama instalable.**
+
 > **Proyecto comunitario independiente:** Phoenix Automation Platform es una contribución gratuita y de código abierto basada en AWX. No está afiliada, certificada ni respaldada oficialmente por Red Hat, Ansible o AWX. Última versión publicada: [v0.1.0-rc1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) (candidata pública; instalación y pruebas funcionales de laboratorio completadas y aceptadas).
 
 <div align="center">
