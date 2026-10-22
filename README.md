@@ -62,7 +62,7 @@ La versión candidata RC1 superó pruebas funcionales de laboratorio, incluyendo
 
 ## 👤 Liderazgo y contacto técnico
 
-**Erick Mesías** — **Fundador y responsable técnico (Founder & Technical Maintainer)** de Phoenix Automation Platform (PAP).  
+**Erick David Mesias Arana** — **Fundador y responsable técnico (Founder & Technical Maintainer)** de Phoenix Automation Platform (PAP).  
 GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Responsables y contacto](MAINTAINERS.md).
 
 Este reconocimiento corresponde a PAP como iniciativa independiente; se mantienen los créditos y las licencias originales de AWX, Ansible y otros componentes Open Source.
