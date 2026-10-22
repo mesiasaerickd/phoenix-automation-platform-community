@@ -275,7 +275,7 @@ El reconocimiento corresponde al desarrollo y mantenimiento de PAP como iniciati
 
 ## 💬 Ayuda, preguntas y participación
 
-¿Necesitas instalar PAP o resolver un error? Lee [Soporte y preguntas frecuentes](SUPPORT.md) y la [guía de diagnóstico](docs/TROUBLESHOOTING.md). Para reportar un fallo reproducible o solicitar una mejora, abre un [Issue](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/issues/new/choose) y utiliza la plantilla correspondiente. Revisa primero las incidencias existentes. **Para compartir experiencias y preguntas abiertas**, se recomienda habilitar GitHub Discussions en la configuración del repositorio; hasta entonces, utiliza Issues. PAP mantiene una comunidad en formación, sin SLA ni soporte garantizado.
+¿Necesitas instalar PAP o resolver un error? Lee [Soporte y preguntas frecuentes](SUPPORT.md) y la [Preguntas frecuentes](docs/FAQ.md). Para reportar un fallo reproducible o solicitar una mejora, abre un [Issue](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/issues/new/choose) y utiliza la plantilla correspondiente. Revisa primero las incidencias existentes. **Para compartir experiencias y preguntas abiertas**, utiliza [GitHub Discussions](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/discussions) una vez terminada su configuración inicial; mientras tanto, utiliza Issues. PAP mantiene una comunidad en formación, sin SLA ni soporte garantizado.
 
 ## 🤝 Comunidad y contribuciones
 
