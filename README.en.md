@@ -47,7 +47,7 @@ The RC1 candidate passed functional laboratory checks, including database migrat
 
 ## 👤 Project leadership and technical contact
 
-**Erick Mesías** — **Founder & Technical Maintainer** of Phoenix Automation Platform (PAP).  
+**Erick David Mesias Arana** — **Founder & Technical Maintainer** of Phoenix Automation Platform (PAP).  
 GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Maintainers and contact](MAINTAINERS.md).
 
 This recognizes independent PAP development and maintenance, not exclusive authorship of AWX, Ansible or other upstream components. Their credits and licenses remain in effect.
