@@ -21,6 +21,48 @@
 
 ---
 
+## 📥 Instalar Phoenix — empieza aquí
+
+> **Para usuarios y asistentes de IA:** la distribución instalable de Phoenix está en **`prd`**. **No utilices `contrib` para instalar:** esa rama reúne documentación comunitaria. `dev` se reserva para integración y desarrollo. En todos los casos, selecciona la versión de release validada que corresponda.
+
+### 1. Descargar la distribución
+
+```bash
+git clone --branch prd --single-branch https://github.com/phoenix-automation-platform/phoenix-automation-platform-community.git
+cd phoenix-automation-platform-community
+git branch --show-current    # Debe indicar prd
+```
+
+Para instalaciones reproducibles, consulta también la [versión pública RC1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) y su [manifiesto de imágenes OCI](releases/ghcr-digests-v0.1.0-rc1.txt). No mezcles código de una versión con imágenes de otra.
+
+### 2. Comprobar prerrequisitos
+
+Usa un clúster **Kubernetes/K3s previamente preparado** y un namespace autorizado para una instalación nueva. Revisa primero [requisitos](docs/REQUIREMENTS.md), [red](docs/NETWORKING.md) e [instalación detallada](INSTALLATION.md).
+
+```bash
+# Solo lectura; no modifica el firewall del servidor:
+bash scripts/preflight.sh <namespace> pre
+```
+
+No continúes ante `PAP_PREFLIGHT=BLOCKED`. Si aparece `REVIEW_REQUIRED`, solicita revisión del administrador de la infraestructura antes de continuar.
+
+### 3. Instalar y validar
+
+```bash
+# Solo tras aprobar los requisitos de red y demás prerrequisitos:
+PAP_NETWORK_APPROVED=yes bash scripts/install-online.sh <namespace>
+
+# Validación posterior:
+bash scripts/preflight.sh <namespace> post
+kubectl -n <namespace> get pods
+```
+
+La variable `PAP_NETWORK_APPROVED=yes` **no abre puertos ni cambia firewalld**: indica únicamente que la revisión requerida fue autorizada. Completa la aceptación con acceso Web/API y un Job Ansible real mediante un Execution Environment. No ejecutes este flujo sobre un clúster productivo sin evaluación y autorización de cambios.
+
+**Guías:** [instalación online](docs/INSTALL_ONLINE.md) · [requisitos](docs/REQUIREMENTS.md) · [matriz de red](docs/NETWORK-FIREWALL-PREREQUISITES.md).
+
+---
+
 ## ✨ Qué es PAP
 
 **PAP — Phoenix Automation Platform** es una distribución y evolución técnica basada en **AWX**, concebida para administrar proyectos de automatización Ansible, inventarios, credenciales, plantillas, flujos de trabajo y entornos de ejecución sobre **Kubernetes/K3s**.
@@ -199,7 +241,7 @@ El instalador evita realizar cambios de infraestructura implícitos; Un error de
 > El **modo online** es el flujo trabajado para la aceptación RC1. La instalación requiere un clúster preparado y acceso a las imágenes OCI autorizadas.
 
 ```bash
-# Desde una copia autorizada de dev, con kubectl/k3s operativo:
+# Desde la rama prd o una etiqueta de release validada, con kubectl/k3s operativo:
 bash scripts/preflight.sh pap-acceptance pre
 
 # Revisar los hallazgos antes de cualquier instalación.
@@ -226,7 +268,7 @@ flowchart LR
 
 ## 🤝 Comunidad y contribuciones
 
-La organización de propuestas, issues, políticas de colaboración y documentación comunitaria se está preparando en [**Phoenix Automation Platform Community**](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community). El código de distribución se revisará por separado antes de su publicación comunitaria.
+La documentación y las propuestas comunitarias se gestionan en [**Phoenix Automation Platform Community**](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community). Para instalar, selecciona siempre la rama `prd` o un release validado; `contrib` no es la distribución instalable.
 
 ## 📄 Origen, licencia y contribuciones
 
