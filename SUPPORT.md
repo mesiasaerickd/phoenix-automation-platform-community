@@ -1,13 +1,12 @@
 # Soporte / Support
 
-PAP es un proyecto comunitario sin SLA. Para errores reproducibles y mejoras utiliza Issues, incluyendo versión, pasos, resultado esperado y evidencia sin secretos.
+**Comienza aquí / Start here:** [FAQ ES/EN](docs/FAQ.md) · [Discussions — preguntas comunitarias](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/discussions) · [Issues — bugs y propuestas](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/issues/new/choose) · [Guía de instalación](README.md).
 
----
+**Consultas generales:** utiliza Discussions una vez completada su configuración inicial. **Fallos reproducibles:** abre un Issue con versión, entorno, pasos, resultado esperado/real y registros sin información sensible. Antes de publicar, busca respuestas existentes. **Vulnerabilidades:** sigue [SECURITY.md](SECURITY.md) y no publiques detalles explotables.
 
-# Community Support (English)
+**Imágenes:** las seis imágenes RC1 están publicadas en GHCR y se verificó su acceso anónimo; la instalación online estándar no solicita PAT. Revisa [el manifiesto de digests](releases/ghcr-digests-v0.1.0-rc1.txt).
 
-Open GitHub Issues for reproducible defects, documentation issues, compatibility questions, and feature requests related to published PAP content.
+**Community questions:** use Discussions after initial setup; for bugs, open an Issue with sanitized reproduction details. Refer to [the FAQ](docs/FAQ.md) and [Security Policy](SECURITY.md). All six RC1 images are publicly accessible and do not require a personal GHCR token for standard installation.
 
-Before posting, search existing Issues. Include the version or commit, container digest when relevant, environment details that are safe to disclose, reproduction steps, expected and actual results, and sanitized logs.
+**Alcance / Scope:** PAP es comunitario, sin soporte contractual, SLA ni tiempo de respuesta garantizado. No publiques secretos ni información interna de empresas.
 
-PAP is community maintained and provides **no contractual support, SLA, or guaranteed response time**. Operators are responsible for their deployments, credentials, network, storage, and Kubernetes/K3s infrastructure. Security vulnerabilities must be reported privately as described in [SECURITY.md](SECURITY.md).
