@@ -149,7 +149,7 @@ The initial job run may first synchronize SCM project content. Subsequent runs m
 | Operator | AWX-compatible custom resource operator | Reconciles PAP's declared application components |
 | Container OS | **AlmaLinux** | Modernized container base; verify each release's image digest |
 | Automation core | AWX **24.6.1**, Ansible Core, Ansible Runner | Job orchestration and automation execution |
-| Job transport | **Receptor 1.6.9**, tested in RC2 | Control-plane execution transport and Unix socket |
+| Job transport | **Receptor 1.6.9**, tested in RC1 | Control-plane execution transport and Unix socket |
 | Database | PostgreSQL **15** with persistent volume | Application state |
 | Supporting services | Redis, rsyslog | Task supporting components |
 | Frontend | Web UI, REST API and customizations | Platform experience, identity and multilingual evolution |
@@ -185,7 +185,7 @@ The initial job run may first synchronize SCM project content. Subsequent runs m
 
 PAP uses Kubernetes scheduling and resource management. The number of concurrent Jobs depends on available compute, storage, EE Pod requirements, quotas and workload characteristics. See the [capacity reference](docs/CAPACITY-PREREQUISITES.md) for baseline profiles and recommended evaluation steps.
 
-## ✅ RC2 functional evidence
+## ✅ RC1 functional evidence
 
 | Test | Observed result |
 |---|---|
@@ -246,7 +246,7 @@ Infrastructure findings and environment-specific recommendations are documented 
 
 ## 🧪 Getting started
 
-The tested RC2 deployment path is **online**. It expects a prepared Kubernetes/K3s cluster and approved access to the relevant OCI images.
+The tested RC1 deployment path is **online**. It expects a prepared Kubernetes/K3s cluster and approved access to the relevant OCI images.
 
 ```bash
 # From the authorized dev checkout:
