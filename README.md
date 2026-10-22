@@ -33,7 +33,7 @@ cd phoenix-automation-platform-community
 git branch --show-current    # Debe indicar prd
 ```
 
-Para instalaciones reproducibles, consulta también la [versión pública RC1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) y su [manifiesto de imágenes OCI](releases/ghcr-digests-v0.1.0-rc1.txt). No mezcles código de una versión con imágenes de otra.
+**Imágenes públicas:** los seis componentes RC1 se distribuyen en `ghcr.io/phoenix-automation-platform/`, con acceso anónimo; **no se necesita PAT, cuenta GHCR ni un registro privado para una instalación estándar**. Consulta también la [versión pública RC1](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/releases/tag/v0.1.0-rc1) y su [manifiesto de imágenes OCI](releases/ghcr-digests-v0.1.0-rc1.txt). No mezcles código de una versión con imágenes de otra.
 
 ### 2. Comprobar prerrequisitos
 
@@ -227,11 +227,11 @@ El instalador evita realizar cambios de infraestructura implícitos; Un error de
 | [`scripts/configure-installation.py`](scripts/configure-installation.py) | Render de parámetros de instalación |
 | [`scripts/configure-images.py`](scripts/configure-images.py) | Preparación de referencias OCI |
 | [`scripts/check-online.py`](scripts/check-online.py) | Verificaciones del paquete online renderizado |
-| [`scripts/configure-ghcr.sh`](scripts/configure-ghcr.sh) | Ayuda a preparar acceso al registro privado |
+| [Manifiesto OCI público RC1](releases/ghcr-digests-v0.1.0-rc1.txt) | Seis imágenes públicas verificadas por digest; sin PAT |
 | [`k8s/awx.yaml`](k8s/awx.yaml) | Plantilla CR AWX/PAP y recursos base |
 | [`k8s/operator.yaml`](k8s/operator.yaml) | Manifiesto del operador |
 | [`k8s/resource-policies.yaml`](k8s/resource-policies.yaml) | ResourceQuota y políticas de recursos |
-| [`releases/ghcr-digests-dev.txt`](releases/ghcr-digests-dev.txt) | Referencias de imágenes del candidato `dev` con SHA256 |
+| [`releases/ghcr-digests-v0.1.0-rc1.txt`](releases/ghcr-digests-v0.1.0-rc1.txt) | Referencias inmutables de las seis imágenes públicas RC1 |
 | [`releases/required-images.txt`](releases/required-images.txt) | Lista de imágenes requeridas |
 | [`.github/workflows/`](.github/workflows/) | Construcción/validación CI por GitHub Actions |
 | [`images/`](images/) | Dockerfiles/Containerfiles y personalizaciones de imágenes |
@@ -272,6 +272,10 @@ flowchart LR
 GitHub: [@mesiasaerickd](https://github.com/mesiasaerickd) · [Responsables y contacto](MAINTAINERS.md).
 
 El reconocimiento corresponde al desarrollo y mantenimiento de PAP como iniciativa independiente; se conservan los créditos y licencias de AWX, Ansible y los componentes Open Source originales.
+
+## 💬 Ayuda, preguntas y participación
+
+¿Necesitas instalar PAP o resolver un error? Lee [Soporte y preguntas frecuentes](SUPPORT.md) y la [Preguntas frecuentes](docs/FAQ.md). Para reportar un fallo reproducible o solicitar una mejora, abre un [Issue](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/issues/new/choose) y utiliza la plantilla correspondiente. Revisa primero las incidencias existentes. **Para compartir experiencias y preguntas abiertas**, utiliza [GitHub Discussions](https://github.com/phoenix-automation-platform/phoenix-automation-platform-community/discussions) una vez terminada su configuración inicial; mientras tanto, utiliza Issues. PAP mantiene una comunidad en formación, sin SLA ni soporte garantizado.
 
 ## 🤝 Comunidad y contribuciones
 
